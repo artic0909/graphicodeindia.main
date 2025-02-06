@@ -1,0 +1,170 @@
+/* ====================Scrolling of Projects===================================== */
+.projects-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #f4f4f4;
+}
+.contact-form-inner{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.blogs-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.main-mid-row{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+}
+
+.service-row{
+  display: grid !important;
+  grid-template-columns: 8fr 4fr !important;
+}
+
+.sp-container{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr !important;
+}
+
+
+.faq-row{
+  display: grid !important;
+  grid-template-columns: 4fr 8fr !important;
+}
+
+
+.img-scroll-container {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.img-scroll-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.card-container2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+
+  }
+
+/* ====================Scrolling of Blogs===================================== */
+.scroll-container {
+  position: relative;
+  min-height: 238px;
+  max-height: 238px;
+  overflow: hidden;
+}
+
+.scroll-lists {
+  display: flex;
+  flex-direction: column;
+  animation: scrollUp 10s linear infinite;
+  transition: animation-play-state 0.3s ease;
+}
+
+.scroll-lists:hover {
+  animation-play-state: paused; /* Pause the animation on hover */
+}
+
+.lists-item {
+  background: #cecdd891;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+  animation-delay: var(--item-delay, 0s); /* Dynamic delay using CSS variable */
+}
+
+/* Keyframes for infinite scrolling */
+@keyframes scrollUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Keyframes for infinite scroll loop without gaps */
+.scroll-lists {
+  display: flex;
+  flex-direction: column;
+  animation: scrollUp 20s linear infinite;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+
+/* ====================Specialized===================================== */
+.specialized-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+
+/* ======================Partners=============================================== */
+.partners-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+  }
+  
+  .partner-item {
+    flex-shrink: 0;
+  }
+  
+  .partner-item img {
+    width: 120px;
+    height: auto;
+  }
+
+  @keyframes scrollPartners {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .partners-container {
+    animation: scrollPartners 40s linear infinite;
+  }
+
+  .partners-container:hover {
+    animation-play-state: paused;
+  }
+  

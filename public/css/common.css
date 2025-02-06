@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --tw-shadow: 0 0 #0000;
+  --org: #ff6011;
+  --bl: #2e4a9f;
+  font-family: "Bricolage Grotesque", serif !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+}
+
+body {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.shadow {
+  box-shadow: 0 0 transparent, 0 0 transparent, var(--tw-shadow);
+  border-radius: 20px;
+}
+
+.shadow-lg {
+  box-shadow: 0 0 transparent, 0 0 transparent, var(--tw-shadow);
+}
+
+.inner-items-center {
+  display: flex !important;
+  align-items: center;
+}
+
+.btn-org {
+  background: #ff6011;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  a {
+    color: white;
+  }
+}
+
+#active-nav {
+  background-color: rgba(224, 224, 224, 0.514);
+  border-radius: 10px;
+  .nav-img {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(100%) saturate(5000%)
+      hue-rotate(-10deg) brightness(100%);
+  }
+  span {
+    color: var(--org);
+  }
+}
+
+.inc-clr {
+  filter: brightness(0) saturate(100%) invert(40%) sepia(100%) saturate(5000%)
+    hue-rotate(-10deg) brightness(100%);
+}
+
+.clr-bl {
+  color: #2e4a9f;
+}
+.clr-org {
+  color: #ff6011;
+}
+.btn-danger {
+  background-color: #2e4a9f !important;
+  border: 1px solid #2e4a9f !important;
+  &:hover {
+    background-color: #10339b !important;
+  }
+}
+.btn-danger2 {
+  background-color: #ff6011 !important;
+  border: 1px solid #ff6011 !important;
+  color: white !important;
+  &:hover {
+    background-color: #ff5805 !important;
+  }
+}
+.btn-danger3 {
+  background-color: #b4b4c2 !important;
+  border: 1px solid #e3e3e9 !important;
+  color: white !important;
+  &:hover {
+    background-color: #a5a5b4 !important;
+  }
+}
+.btn-org-01 {
+  background: transparent !important;
+  border: 2px solid #ff6011 !important;
+  &:hover {
+    background-color: #e9e9e93d !important;
+  }
+}
+
+.accordion-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.btn-active {
+  background-color: #ff6011 !important;
+  border: 1px solid #ff6011 !important;
+  color: white !important;
+  &:hover {
+    background-color: #ff5805 !important;
+  }
+}
+/* ========================================================================== */
+/* Loader CSS Start========================================================== */
+/* ========================================================================== */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  height: 100vh;
+}
+.loader {
+  --s: 25px;
+  --g: 5px;
+
+  width: calc(3 * (1.353 * var(--s) + var(--g)));
+  aspect-ratio: 3;
+  background: linear-gradient(#ff6011 0 0) left/33% 100% no-repeat,
+    conic-gradient(
+      from -90deg at var(--s) calc(0.353 * var(--s)),
+      #fff 135deg,
+      #9c9a9a 0 270deg,
+      #a5a3a3 0
+    );
+  background-blend-mode: multiply;
+  --_m: linear-gradient(
+      to bottom right,
+      #0000 calc(0.25 * var(--s)),
+      #000 0 calc(100% - calc(0.25 * var(--s)) - 1.414 * var(--g)),
+      #0000 0
+    ),
+    conic-gradient(
+      from -90deg at right var(--g) bottom var(--g),
+      #000 90deg,
+      #0000 0
+    );
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  background-size: calc(100% / 3) 100%;
+  -webkit-mask-size: calc(100% / 3) 100%;
+  mask-size: calc(100% / 3) 100%;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  animation: l7 steps(3) 1.5s infinite;
+}
+@keyframes l7 {
+  to {
+    background-position: 150% 0%;
+  }
+}
+/* ======================================================================== */
+/* Loader CSS End========================================================== */
+/* ======================================================================== */
+
+/* ========================================================================== */
+/* Navbar CSS Start========================================================== */
+/* ========================================================================== */
+.navbar_container {
+  margin-top: 25px;
+  border-radius: 20px;
+  position: sticky !important;
+  top: 0;
+  background: #ffffff !important;
+  z-index: 111;
+}
+.nav-link {
+  border-radius: 10px;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.nav-link:hover {
+  cursor: pointer;
+  background-color: rgba(224, 224, 224, 0.514);
+  border-radius: 10px;
+  .nav-img {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(100%) saturate(5000%)
+      hue-rotate(-10deg) brightness(100%);
+  }
+  span {
+    color: var(--org);
+  }
+}
+
+/* ========================================================================== */
+/* Navbar CSS End============================================================ */
+/* ========================================================================== */
+
+/* ========================================================================== */
+/* Elements animation up-down Start========================================== */
+/* ========================================================================== */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0); /* Starting and ending position */
+  }
+  50% {
+    transform: translateY(-15px); /* Move up slightly */
+  }
+}
+
+/* Apply animation to the robot */
+.fixed-robot {
+  animation: float 3s ease-in-out infinite; /* Smooth animation loop */
+}
+
+/* Apply animation to the shape */
+.fixed-shape {
+  animation: float 3s ease-in-out infinite; /* Same animation properties */
+  animation-delay: 1.5s; /* Add delay for a staggered effect */
+}
+/* ========================================================================== */
+/* Elements animation up-down End============================================ */
+/* ========================================================================== */
