@@ -3,10 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+// Error page if any page not found
+Route::fallback(function () {
+    return response()->view('error', [], 404);
 });
-
 
 require __DIR__ . '/auth.php';
 
@@ -66,4 +66,42 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('admin-inquiries');
 
 
+});
+
+
+
+// =======================================================================================================================
+// User Routes ===========================================================================================================
+// =======================================================================================================================
+Route::get('/', function () {
+    return view('user-home');
+});
+
+Route::get('/about', function () {
+    return view('user-about');
+});
+
+Route::get('/services', function () {
+    return view('user-services');
+});
+
+Route::get('/projects', function () {
+    return view('user-projects');
+});
+
+Route::get('/blogs', function () {
+    return view('user-blogs');
+});
+
+Route::get('/single-blog', function () {
+    return view('user-single-blog');
+});
+
+Route::get('/privacy-policy', function () {
+    return view('user-privacy-policy');
+});
+
+
+Route::get('/contact', function () {
+    return view('user-contact');
 });
