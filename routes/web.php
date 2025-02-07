@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminVideoController;
+use App\Http\Controllers\AdminNumbersController;
+use App\Http\Controllers\AdminVideoDescControlller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin-home', function () {
         return view('admin-home');
     })->name('admin-home');
+
+    Route::get('/admin-home', [AdminVideoDescControlller::class, 'index'])->name('admin-home');
+    Route::post('/admin-home', [AdminVideoDescControlller::class, 'store'])->name('admin-home.store');
+    Route::put('/admin-home/{id}', [AdminVideoDescControlller::class, 'update'])->name('admin-home.update');
+    Route::delete('/admin-home/delete/{id}', [AdminVideoDescControlller::class, 'destroy'])->name('admin-home.delete');
+
+    Route::post('/admin-home/num', [AdminNumbersController::class, 'store'])->name('admin-home.num.store');
+    Route::put('/admin-home/num/{id}', [AdminNumbersController::class, 'update'])->name('admin-home.num.update');
+    Route::delete('/admin-home/num/delete/{id}', [AdminNumbersController::class, 'destroy'])->name('admin-home.num.delete');
     // Admin---Home---Routes--->
 
 
