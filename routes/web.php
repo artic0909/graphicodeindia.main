@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminVideoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
 
+    // Admin---Home---Routes--->
     Route::get('/admin-home', function () {
         return view('admin-home');
     })->name('admin-home');
+    // Admin---Home---Routes--->
+
+
+
+
+
 
 
     Route::get('/admin-about', function () {
@@ -64,6 +72,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin-inquiries', function () {
         return view('admin-inquiries');
     })->name('admin-inquiries');
+
+
+
+
+
 
 
 });

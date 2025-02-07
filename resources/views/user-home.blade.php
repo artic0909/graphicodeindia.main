@@ -44,7 +44,7 @@
                 <!-- Navbar Start===================================================-->
                 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar_container shadow border p-3">
                     <div class="container">
-                        <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <a class="navbar-brand d-flex align-items-center" href="/">
                             <img src="./img/logo.png" alt="Graphicode India Logo" class="me-2 nav-logo" height="32" />
                             <span class="fw-bold fs-4 clr-bl">Graphicode</span>&nbsp;
                             <span class="fw-bold fs-4 clr-org"> India</span>
@@ -59,36 +59,36 @@
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2 align-items-center">
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center text-secondary" aria-current="page" id="active-nav"
-                                        href="index.html"><img class="nav-img" src="./icon/home.png" width="19" alt="" />&nbsp;<span>Home</span></a>
+                                        href="/"><img class="nav-img" src="./icon/home.png" width="19" alt="" />&nbsp;<span>Home</span></a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="about.html"><img class="nav-img"
+                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="/about"><img class="nav-img"
                                             src="./icon/about.png" width="19" alt="" />&nbsp;<span>About</span></a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="services.html"><img class="nav-img"
+                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="/services"><img class="nav-img"
                                             src="./icon/services.png" width="22" alt="" />&nbsp;<span>Services</span></a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="projects.html"><img class="nav-img"
+                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="/projects"><img class="nav-img"
                                             src="./icon/projects.png" width="18" alt="" />&nbsp;<span>Projects</span></a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="blogs.html"><img class="nav-img"
+                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="/blogs"><img class="nav-img"
                                             src="./icon/blogs.png" width="20" alt="" />&nbsp;<span>Blogs</span></a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link fw-bold hide inner-items-center" aria-current="page" href="contact.html"><img class="nav-img"
+                                    <a class="nav-link fw-bold hide inner-items-center" aria-current="page" href="/contact"><img class="nav-img"
                                             src="./icon/contactus.png" width="23" alt="" />&nbsp;<span>Contact</span></a>
                                 </li>
 
                                 <li class="nav-item btn-org">
-                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="contact.html">Let's Talk &nbsp;
+                                    <a class="nav-link fw-bold inner-items-center" aria-current="page" href="mailto:">Let's Talk &nbsp;
                                         <img class="nav-img hide" src="./icon/arrow-talk.png" width="15" alt="" /></a>
                                 </li>
                             </ul>
