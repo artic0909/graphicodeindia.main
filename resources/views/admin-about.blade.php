@@ -25,22 +25,22 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($marquees as $marquee)
                             <tr>
-                                <td class="fw-bold">Hi</td>
+                                <td class="fw-bold">{{ $marquee->marquee_text }}</td>
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditmModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditmModal{{ $marquee->id }}">
                                         <i class="fa-solid fa-pen-to-square fa-2x text-primary"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeletemModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeletemModal{{ $marquee->id }}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
 
 
@@ -50,34 +50,46 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">Descriptions</th>
+                                <th scope="col">Description 1</th>
+                                <th scope="col">Description 2</th>
+                                <th scope="col">Description 3</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($abouts as $about)
                             <tr>
-                                <td class="fw-bold">Desc</td>
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal">
-                                        <i class="fa-solid fa-message fa-2x text-dark"></i>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal1{{ $about->id }}">
+                                        <i class="fa-solid fa-message fa-2x text-success"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditaModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal2{{ $about->id }}">
+                                        <i class="fa-solid fa-message fa-2x text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal3{{ $about->id }}">
+                                        <i class="fa-solid fa-message fa-2x text-danger"></i>
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditaModal{{ $about->id }}">
                                         <i class="fa-solid fa-pen-to-square fa-2x text-primary"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeleteaModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeleteaModal{{ $about->id }}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
 
 
@@ -94,24 +106,24 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($faqs as $faq)
                             <tr>
-                                <td class="fw-bold text-dark">1</td>
-                                <td class="fw-bold text-danger">Question</td>
-                                <td class="fw-bold text-success">Answer</td>
+                                <td class="fw-bold text-dark">{{$loop->iteration}}</td>
+                                <td class="fw-bold text-danger">{{$faq->question}}</td>
+                                <td class="fw-bold text-success">{{$faq->answer}}</td>
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditfModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditfModal{{ $faq->id }}">
                                         <i class="fa-solid fa-pen-to-square fa-2x text-primary"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeletefModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeletefModal{{ $faq->id }}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
 
 
@@ -140,9 +152,11 @@
     <!-- ============================================================================================================================================================ -->
 
     <!-- Add About Desc Details Modal Start-->
+    @if($abouts->count() == 0)
     <button type="button" class="btn btn-danger floating-button" data-bs-toggle="modal" data-bs-target="#AddModal">
         + About Desc
     </button>
+    @endif
 
 
     <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
@@ -153,27 +167,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
-
-
+                    <form action="{{ route('admin-about.desc.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Description 1<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Home Description" required></textarea>
+                            <label for="desc_one" class="form-label fw-bold mb-2">Description 1<span class="text-danger">*</span></label>
+                            <textarea name="desc_one" id="desc_one" class="form-control" rows="6" placeholder="Enter Description" required></textarea>
                         </div>
 
 
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Description 2<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Home Description" required></textarea>
+                            <label for="desc_two" class="form-label fw-bold mb-2">Description 2<span class="text-danger">*</span></label>
+                            <textarea name="desc_two" id="desc_two" class="form-control" rows="6" placeholder="Enter Description" required></textarea>
                         </div>
 
 
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Description 3<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Home Description" required></textarea>
+                            <label for="desc_three" class="form-label fw-bold mb-2">Description 3<span class="text-danger">*</span></label>
+                            <textarea name="desc_three" id="desc_three" class="form-control" rows="6" placeholder="Enter Description" required></textarea>
                         </div>
 
 
@@ -192,7 +205,8 @@
 
 
     <!-- Edit About Desc Details Modal Start-->
-    <div class="modal fade" id="EditaModal" tabindex="-1" aria-labelledby="EditaModal" aria-hidden="true">
+    @foreach($abouts as $about)
+    <div class="modal fade" id="EditaModal{{ $about->id }}" tabindex="-1" aria-labelledby="EditaModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -200,27 +214,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
-
-
+                    <form action="{{ route('admin-about.desc.update', $about->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Description 1<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Home Description" required></textarea>
+                            <label for="desc_one" class="form-label fw-bold mb-2">Description 1<span class="text-danger">*</span></label>
+                            <textarea name="desc_one" id="desc_one" class="form-control" rows="6" required>{{ $about->desc_one }}</textarea>
                         </div>
 
 
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Description 2<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Home Description" required></textarea>
+                            <label for="desc_two" class="form-label fw-bold mb-2">Description 2<span class="text-danger">*</span></label>
+                            <textarea name="desc_two" id="desc_two" class="form-control" rows="6" required>{{ $about->desc_two }}</textarea>
                         </div>
 
 
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Description 3<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Home Description" required></textarea>
+                            <label for="desc_three" class="form-label fw-bold mb-2">Description 3<span class="text-danger">*</span></label>
+                            <textarea name="desc_three" id="desc_three" class="form-control" rows="6" required>{{ $about->desc_three }}</textarea>
                         </div>
 
 
@@ -235,29 +249,76 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Edit About Desc Details Modal End-->
 
 
-    <!-- Descriprtion View Modal Start -->
-    <div class="modal fade" id="descriptionViewModal" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
+    <!-- Descriprtion 0 View Modal Start -->
+    @foreach($abouts as $about)
+    <div class="modal fade" id="descriptionViewModal1{{ $about->id }}" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="descriptionViewModalLabel">Description</h3>
+                    <h3 class="modal-title" id="descriptionViewModalLabel">Description 1</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="fw-bold">fgdeghty</p>
+                    <p class="fw-bold">{{ $about->desc_one }}</p>
                 </div>
 
             </div>
         </div>
     </div>
-    <!-- Descriprtion View Modal End -->
+    @endforeach
+    <!-- Descriprtion 0 View Modal End -->
+
+
+
+    <!-- Descriprtion 1 View Modal Start -->
+    @foreach($abouts as $about)
+    <div class="modal fade" id="descriptionViewModal2{{ $about->id }}" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="descriptionViewModalLabel">Description 2</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="fw-bold">{{ $about->desc_two }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @endforeach
+    <!-- Descriprtion 1 View Modal End -->
+
+
+
+
+    <!-- Descriprtion 2 View Modal Start -->
+    @foreach($abouts as $about)
+    <div class="modal fade" id="descriptionViewModal3{{ $about->id }}" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="descriptionViewModalLabel">Description 3</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="fw-bold">{{ $about->desc_three }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @endforeach
+    <!-- Descriprtion 2 View Modal End -->
 
 
     <!-- Delete About Desc Modal Start -->
-    <div class="modal fade" id="DeleteaModal" tabindex="-1" aria-labelledby="DeleteaModal" aria-hidden="true">
+    @foreach($abouts as $about)
+    <div class="modal fade" id="DeleteaModal{{ $about->id }}" tabindex="-1" aria-labelledby="DeleteaModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -268,7 +329,7 @@
                     Are you sure you want to delete this information?
                 </div>
                 <div class="modal-footer">
-                    <form action="" method="POST">
+                    <form action="{{ route('admin-about.desc.delete', $about->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -278,6 +339,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Delete About Desc Modal End -->
 
     <!-- ============================================================================================================================================================ -->
@@ -314,16 +376,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-about.faq.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Question<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Question" required>
+                            <label for="question" class="form-label fw-bold mb-2">Question<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="question" id="question" placeholder="Enter Question" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Answer<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Answer" required></textarea>
+                            <label for="answer" class="form-label fw-bold mb-2">Answer<span class="text-danger">*</span></label>
+                            <textarea name="answer" id="answer" class="form-control" rows="6" placeholder="Enter Answer" required></textarea>
                         </div>
 
                         <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -341,7 +404,8 @@
 
 
     <!-- Edit FAQ Modal Start-->
-    <div class="modal fade" id="EditfModal" tabindex="-1" aria-labelledby="EditfModal" aria-hidden="true">
+    @foreach($faqs as $faq)
+    <div class="modal fade" id="EditfModal{{ $faq->id }}" tabindex="-1" aria-labelledby="EditfModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -349,16 +413,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-about.faq.update', $faq->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Question<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Question" required>
+                            <label for="question" class="form-label fw-bold mb-2">Question<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="question" id="question" value="{{ $faq->question }}">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Answer<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Answer" required></textarea>
+                            <label for="answer" class="form-label fw-bold mb-2">Answer<span class="text-danger">*</span></label>
+                            <textarea name="answer" id="answer" class="form-control" rows="6">{{ $faq->answer }}</textarea>
                         </div>
 
                         <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -371,11 +437,13 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Edit FAQ Modal End-->
 
 
     <!-- Delete Video Modal Start -->
-    <div class="modal fade" id="DeletefModal" tabindex="-1" aria-labelledby="DeletefModal" aria-hidden="true">
+    @foreach($faqs as $faq)
+    <div class="modal fade" id="DeletefModal{{ $faq->id }}" tabindex="-1" aria-labelledby="DeletefModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -386,7 +454,7 @@
                     Are you sure you want to delete this information?
                 </div>
                 <div class="modal-footer">
-                    <form action="" method="POST">
+                    <form action="{{ route('admin-about.faq.delete', $faq->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -396,6 +464,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Delete Video Modal End -->
 
     <!-- ============================================================================================================================================================ -->
@@ -418,9 +487,11 @@
     <!-- ============================================================================================================================================================ -->
 
     <!-- Add Marquee Text Modal Start-->
+    @if($marquees->count() == 0)
     <button type="button" class="btn btn-danger2 floating-button5" data-bs-toggle="modal" data-bs-target="#AddPartnerModal">
         Add Marquee Text
     </button>
+    @endif
 
 
     <div class="modal fade" id="AddPartnerModal" tabindex="-1" aria-labelledby="AddPartnerModalLabel" aria-hidden="true">
@@ -431,11 +502,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-about.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Text<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Text" required>
+                            <label for="marquee_text" class="form-label fw-bold mb-2">Text<span class="text-danger">*</span></label>
+                            <textarea name="marquee_text" id="marquee_text" class="form-control" placeholder="Enter Text" rows="6" required></textarea>
                         </div>
 
                         <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -453,7 +526,8 @@
 
 
     <!-- Edit Marquee Text Modal Start-->
-    <div class="modal fade" id="EditmModal" tabindex="-1" aria-labelledby="EditmModal" aria-hidden="true">
+    @foreach($marquees as $marquee)
+    <div class="modal fade" id="EditmModal{{$marquee->id}}" tabindex="-1" aria-labelledby="EditmModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -461,11 +535,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-about.update', $marquee->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
                         <div class="form-group mb-3">
                             <label for="" class="form-label fw-bold mb-2">Text<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Text" required>
+                            <textarea name="marquee_text" id="marquee_text" class="form-control" rows="6" required>{{ $marquee->marquee_text }}</textarea>
                         </div>
 
                         <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -478,11 +554,13 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Edit Marquee Text Modal End-->
 
 
     <!-- Delete Video Modal Start -->
-    <div class="modal fade" id="DeletemModal" tabindex="-1" aria-labelledby="DeletemModal" aria-hidden="true">
+    @foreach($marquees as $marquee)
+    <div class="modal fade" id="DeletemModal{{$marquee->id}}" tabindex="-1" aria-labelledby="DeletemModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -493,7 +571,7 @@
                     Are you sure you want to delete this information?
                 </div>
                 <div class="modal-footer">
-                    <form action="" method="POST">
+                    <form action="{{ route('admin-about.delete', $marquee->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -503,6 +581,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Delete Video Modal End -->
 
     <!-- ============================================================================================================================================================ -->

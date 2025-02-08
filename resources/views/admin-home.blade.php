@@ -99,23 +99,23 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($partners as $partner)
                             <tr>
-                                <td><img class="rounded-3" width="50" height="50" src="https://assets.transfernow.net/28975412/logos/logo-tnow-icon.png" alt=""></td>
+                                <td><img class="rounded-3" width="50" height="50" src="{{ asset('storage/' . $partner->partner_logo) }}" alt=""></td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#Edit22ViewModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#Edit22ViewModal{{$partner->id}}">
                                         <i class="fa-solid fa-pen-to-square fa-2x text-primary"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#Delete22Modal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#Delete22Modal{{$partner->id}}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
 
 
@@ -446,11 +446,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
+                        <form action="{{ route('admin-home.partner.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
 
                             <div class="form-group mb-3">
-                                <label for="" class="form-label fw-bold mb-2">Logo<span class="text-danger">*</span></label>
-                                <input type="file" class="form-control rounded" name="" id="" required>
+                                <label for="partner_logo" class="form-label fw-bold mb-2">Logo<span class="text-danger">*</span></label>
+                                <input type="file" class="form-control rounded" name="partner_logo" id="partner_logo" required>
                             </div>
 
                             <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -469,19 +470,22 @@
 
 
         <!-- Edit Partner Modal Start -->
-        <div class="modal fade" id="Edit22ViewModal" tabindex="-1" aria-labelledby="Edit22ViewModal" aria-hidden="true">
+        @foreach($partners as $partner)
+        <div class="modal fade" id="Edit22ViewModal{{$partner->id}}" tabindex="-1" aria-labelledby="Edit22ViewModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="Edit22ViewModal">Add Partner</h4>
+                        <h4 class="modal-title" id="Edit22ViewModal">Edit Partner</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
+                        <form action="{{ route('admin-home.partner.update', $partner->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
 
                             <div class="form-group mb-3">
-                                <label for="" class="form-label fw-bold mb-2">Logo<span class="text-danger">*</span></label>
-                                <input type="file" class="form-control rounded" name="" id="" required>
+                                <label for="partner_logo" class="form-label fw-bold mb-2">Logo<span class="text-danger">*</span></label>
+                                <input type="file" class="form-control rounded" name="partner_logo" id="partner_logo" required>
                             </div>
 
                             <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -494,12 +498,14 @@
                 </div>
             </div>
         </div>
+        @endforeach
         <!-- Edit Partner Modal End -->
 
 
 
         <!-- Delete Video Modal Start -->
-        <div class="modal fade" id="Delete22Modal" tabindex="-1" aria-labelledby="Delete22Modal" aria-hidden="true">
+        @foreach($partners as $partner)
+        <div class="modal fade" id="Delete22Modal{{$partner->id}}" tabindex="-1" aria-labelledby="Delete22Modal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -510,7 +516,7 @@
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{ route('admin-home.partner.delete', $partner->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -521,6 +527,7 @@
             </div>
         </div>
         <!-- Delete Video Modal End -->
+        @endforeach
 
         <!-- ============================================================================================================================================================ -->
         <!-- ============================================================================================================================================================ -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminNumbersModel;
+use App\Models\AdminPartnerModel;
 use App\Models\AdminVideoDescModel;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,9 @@ class AdminVideoDescControlller extends Controller
         $nums = AdminNumbersModel::get();
         $numCount = AdminNumbersModel::count();
 
-        return view('admin-home', compact('datas', 'videoCount', 'nums', 'numCount'));
+        $partners = AdminPartnerModel::all(); //it get all data json
+
+        return view('admin-home', compact('datas', 'videoCount', 'nums', 'numCount', 'partners'));
     }
 
 
