@@ -21,30 +21,30 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($blogs as $blog)
                             <tr>
-                                <td><img class="rounded-3" width="50" height="50" src="https://assets.transfernow.net/28975412/logos/logo-tnow-icon.png" alt=""></td>
-                                <td class="text-success fw-bold">Website Development</td>
-                                <td class="fw-bold">14-10-2022</td>
+                                <td><img class="rounded-3" width="50" height="50" src="{{ asset('storage/' . $blog->image) }}" alt=""></td>
+                                <td class="text-success fw-bold">{{ $blog->title }}</td>
+                                <td class="fw-bold">{{ $blog->date }}</td>
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal{{$blog->id}}">
                                         <i class="fa-solid fa-message fa-2x text-success"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditModal{{$blog->id}}">
                                         <i class="fa-solid fa-pen-to-square fa-2x text-primary"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeleteModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeleteModal{{$blog->id}}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
                 </div>
             </div>
@@ -66,25 +66,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-blogs.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Blog Image<span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" required>
+                            <label for="image" class="form-label fw-bold mb-2">Blog Image<span class="text-danger">*</span></label>
+                            <input type="file" name="image" class="form-control" id="image" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Blog Title<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Blog Title" required>
+                            <label for="title" class="form-label fw-bold mb-2">Blog Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="title" id="title" placeholder="Enter Blog Title" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Posting Date<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control rounded" name="" id="" required>
+                            <label for="date" class="form-label fw-bold mb-2">Posting Date<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control rounded" name="date" id="date" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Blog Description<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Blog Description" required></textarea>
+                            <label for="desc" class="form-label fw-bold mb-2">Blog Description<span class="text-danger">*</span></label>
+                            <textarea name="desc" id="desc" class="form-control" rows="6" placeholder="Enter Blog Description" required></textarea>
                         </div>
 
 
@@ -104,7 +106,8 @@
 
 
     <!-- Edit Modal Start-->
-    <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="EditModal" aria-hidden="true">
+    @foreach($blogs as $blog)
+    <div class="modal fade" id="EditModal{{$blog->id}}" tabindex="-1" aria-labelledby="EditModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -112,25 +115,28 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Blog Image<span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" required>
+                            <label for="image" class="form-label fw-bold mb-2">Blog Image<span class="text-danger">*</span></label>
+                            <input type="file" name="image" class="form-control" id="image">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Blog Title<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Blog Title" required>
+                            <label for="title" class="form-label fw-bold mb-2">Blog Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="title" id="title" value="{{ $blog->title }}">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Posting Date<span class="text-danger">*</span></label>
-                            <input type="date" class="form-control rounded" name="" id="" required>
+                            <label for="date" class="form-label fw-bold mb-2">Posting Date<span class="text-danger">*</span></label>
+                            <input type="date" class="form-control rounded" name="date" id="date" value="{{ $blog->date }}">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Blog Description<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Blog Description" required></textarea>
+                            <label for="desc" class="form-label fw-bold mb-2">Blog Description<span class="text-danger">*</span></label>
+                            <textarea name="desc" id="desc" class="form-control" rows="6">{{ $blog->desc }}</textarea>
                         </div>
 
 
@@ -145,31 +151,35 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Edit Modal End-->
 
 
 
     <!-- Descriprtion View Modal Start -->
-    <div class="modal fade" id="descriptionViewModal" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
+    @foreach($blogs as $blog)
+    <div class="modal fade" id="descriptionViewModal{{$blog->id}}" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="descriptionViewModalLabel">Description</h3>
+                    <h3 class="modal-title" id="descriptionViewModalLabel">{{ $blog->title }}</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="fw-bold">fgdeghty</p>
+                    <p class="fw-bold">{{ $blog->desc }}</p>
                 </div>
 
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Descriprtion View Modal End -->
 
 
 
     <!-- Delete Modal Start -->
-    <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModal" aria-hidden="true">
+    @foreach($blogs as $blog)
+    <div class="modal fade" id="DeleteModal{{$blog->id}}" tabindex="-1" aria-labelledby="DeleteModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -180,7 +190,7 @@
                     Are you sure you want to delete this information?
                 </div>
                 <div class="modal-footer">
-                    <form action="" method="POST">
+                    <form action="{{ route('admin-blogs.delete', $blog->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -190,6 +200,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Delete Modal End -->
 
 

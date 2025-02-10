@@ -22,31 +22,31 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($projects as $project)
                             <tr>
-                                <td><img class="rounded-3" width="50" height="50" src="https://assets.transfernow.net/28975412/logos/logo-tnow-icon.png" alt=""></td>
-                                <td class="text-success fw-bold">Duracoat</td>
-                                <td class="fw-bold">Website Development</td>
-                                <td><a href="" style="text-decoration: underline;" class="text-primary fw-bold">Visit</a></td>
+                                <td><img class="rounded-3" width="50" height="50" src="{{ asset('storage/' . $project->image) }}" alt=""></td>
+                                <td class="text-success fw-bold">{{ $project->title }}</td>
+                                <td class="fw-bold">{{ $project->category }}</td>
+                                <td><a href="{{ $project->link }}" target="_blank" style="text-decoration: underline;" class="text-primary fw-bold">Visit</a></td>
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal{{$project->id}}">
                                         <i class="fa-solid fa-message fa-2x text-dark"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditModal{{$project->id}}">
                                         <i class="fa-solid fa-pen-to-square fa-2x text-primary"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeleteModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeleteModal{{$project->id}}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
                 </div>
             </div>
@@ -69,30 +69,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-projects.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Image<span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" required>
+                            <label for="image" class="form-label fw-bold mb-2">Project Image<span class="text-danger">*</span></label>
+                            <input type="file" name="image" id="image" class="form-control" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Title<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Project Title" required>
+                            <label for="title" class="form-label fw-bold mb-2">Project Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="title" id="title" placeholder="Enter Project Title" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Category<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Project Category" required>
+                            <label for="category" class="form-label fw-bold mb-2">Project Category<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="category" id="category" placeholder="Enter Project Category" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Description<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Project Description" required></textarea>
+                            <label for="desc" class="form-label fw-bold mb-2">Project Description<span class="text-danger">*</span></label>
+                            <textarea name="desc" id="desc" class="form-control" rows="6" placeholder="Enter Project Description" required></textarea>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Link/URL<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Project Link/URL" required>
+                            <label for="link" class="form-label fw-bold mb-2">Project Link/URL<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="link" id="link" placeholder="Enter Project Link/URL" required>
                         </div>
 
                         <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -110,7 +112,8 @@
 
 
     <!-- Edit Modal Start-->
-    <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="EditModal" aria-hidden="true">
+    @foreach($projects as $project)
+    <div class="modal fade" id="EditModal{{$project->id}}" tabindex="-1" aria-labelledby="EditModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -118,30 +121,33 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Image<span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" required>
+                            <label for="image" class="form-label fw-bold mb-2">Project Image<span class="text-danger">*</span></label>
+                            <input type="file" name="image" id="image" class="form-control">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Title<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Project Title" required>
+                            <label for="title" class="form-label fw-bold mb-2">Project Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="title" id="title" value="{{ $project->title }}">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Category<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Project Category" required>
+                            <label for="category" class="form-label fw-bold mb-2">Project Category<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="category" id="category" value="{{ $project->category }}">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Description<span class="text-danger">*</span></label>
-                            <textarea name="" id="" class="form-control" rows="6" placeholder="Enter Project Description" required></textarea>
+                            <label for="desc" class="form-label fw-bold mb-2">Project Description<span class="text-danger">*</span></label>
+                            <textarea name="desc" id="desc" class="form-control" rows="6">{{ $project->desc }}</textarea>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Project Link/URL<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Project Link/URL" required>
+                            <label for="link" class="form-label fw-bold mb-2">Project Link/URL<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="link" id="link" value="{{ $project->link }}">
                         </div>
 
                         <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -154,33 +160,37 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Edit Modal End-->
 
 
 
 
     <!-- Descriprtion View Modal Start -->
-    <div class="modal fade" id="descriptionViewModal" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
+    @foreach($projects as $project)
+    <div class="modal fade" id="descriptionViewModal{{$project->id}}" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="descriptionViewModalLabel">Description</h3>
+                    <h3 class="modal-title" id="descriptionViewModalLabel">{{ $project->title }}</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="fw-bold">fgdeghty</p>
+                    <p class="fw-bold">{{ $project->desc }}</p>
                 </div>
 
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Descriprtion View Modal End -->
 
 
 
 
     <!-- Delete Modal Start -->
-    <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModal" aria-hidden="true">
+    @foreach($projects as $project)
+    <div class="modal fade" id="DeleteModal{{$project->id}}" tabindex="-1" aria-labelledby="DeleteModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -191,7 +201,7 @@
                     Are you sure you want to delete this information?
                 </div>
                 <div class="modal-footer">
-                    <form action="" method="POST">
+                    <form action="{{ route('admin-projects.delete', $project->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -201,6 +211,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Delete Modal End -->
 
 

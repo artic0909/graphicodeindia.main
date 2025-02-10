@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AdminAboutDescController;
 use App\Http\Controllers\AdminAboutFAQController;
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminMarqueeTextController;
 use App\Http\Controllers\AdminNumbersController;
 use App\Http\Controllers\AdminPartnerController;
+use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminSpecializedCategoryController;
 use App\Http\Controllers\AdminSpecializedController;
@@ -112,16 +114,31 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Admin---specialized---Routes--->
 
 
+
+    // Admin---projects---Routes--->
     Route::get('/admin-projects', function () {
         return view('admin-projects');
     })->name('admin-projects');
 
+    Route::get('/admin-projects', [AdminProjectController::class, 'index'])->name('admin-projects');
+    Route::post('/admin-projects', [AdminProjectController::class, 'store'])->name('admin-projects.store');
+    Route::put('/admin-projects/{id}', [AdminProjectController::class, 'update'])->name('admin-projects.update');
+    Route::delete('/admin-projects/delete/{id}', [AdminProjectController::class, 'destroy'])->name('admin-projects.delete');
+    // Admin---projects---Routes--->
 
 
+
+
+    // Admin---blogs---Routes--->
     Route::get('/admin-blogs', function () {
         return view('admin-blogs');
     })->name('admin-blogs');
 
+    Route::get('/admin-blogs', [AdminBlogController::class, 'index'])->name('admin-blogs');
+    Route::post('/admin-blogs', [AdminBlogController::class, 'store'])->name('admin-blogs.store');
+    Route::put('/admin-blogs/{id}', [AdminBlogController::class, 'update'])->name('admin-blogs.update');
+    Route::delete('/admin-blogs/delete/{id}', [AdminBlogController::class, 'destroy'])->name('admin-blogs.delete');
+    // Admin---blogs---Routes--->
 
 
     Route::get('/admin-inquiries', function () {
