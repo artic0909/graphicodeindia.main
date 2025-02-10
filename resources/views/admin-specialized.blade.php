@@ -21,22 +21,22 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($categories as $item)
                             <tr>
-                                <td class="fw-bold">Website Development</td>
+                                <td class="fw-bold text-success">{{$item->category}}</td>
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditcModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditcModal{{$item->id}}">
                                         <i class="fa-solid fa-pen-to-square fa-2x text-primary"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeletecModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeletecModal{{$item->id}}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
 
 
@@ -55,24 +55,24 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($spinfo as $info)
                             <tr>
-                                <td><img class="rounded-3" width="50" height="50" src="https://assets.transfernow.net/28975412/logos/logo-tnow-icon.png" alt=""></td>
-                                <td class="fw-bold">Duracoat</td>
-                                <td class="text-success fw-bold">Website Development</td>
+                                <td><img class="rounded-3" width="50" height="50" src="{{ asset('storage/' . $info->logo) }}" alt=""></td>
+                                <td class="fw-bold">{{$info->title}}</td>
+                                <td class="text-success fw-bold">{{ $info->category->category ?? 'N/A' }}</td>
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditsModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#EditsModal{{$info->id}}">
                                         <i class="fa-solid fa-pen-to-square fa-2x text-primary"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeletesModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeletesModal{{$info->id}}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
                 </div>
             </div>
@@ -103,27 +103,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-specialized.info.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Logo<span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" required>
+                            <label for="logo" class="form-label fw-bold mb-2">Logo<span class="text-danger">*</span></label>
+                            <input type="file" id="logo" name="logo" class="form-control" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Category<span class="text-danger">*</span></label>
-                            <select name="" id="" class="form-control rounded">
+                            <label for="specialized_category" class="form-label fw-bold mb-2">Category<span class="text-danger">*</span></label>
+                            <select name="specialized_category" id="specialized_category" class="form-control rounded">
                                 <option value="" selected>Select Category</option>
-                                <option value="Website Development">Website Development</option>
-                                <option value="Mobile Development">Mobile Development</option>
-                                <option value="Desktop Development">Desktop Development</option>
-                                <option value="Software Development">Software Development</option>
-                                <option value="Game Development">Game Development</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Title<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Title" required>
+                            <label for="title" class="form-label fw-bold mb-2">Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="title" id="title" placeholder="Enter Title" required>
                         </div>
 
 
@@ -142,7 +142,8 @@
 
 
     <!-- Edit Modal Start-->
-    <div class="modal fade" id="EditsModal" tabindex="-1" aria-labelledby="EditsModal" aria-hidden="true">
+    @foreach ($spinfo as $info)
+    <div class="modal fade" id="EditsModal{{$info->id}}" tabindex="-1" aria-labelledby="EditsModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -150,27 +151,28 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-specialized.info.update', $info->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Logo<span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" required>
+                            <label for="logo" class="form-label fw-bold mb-2">Logo<span class="text-danger">*</span></label>
+                            <input type="file" class="form-control" id="logo" name="logo">
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Category<span class="text-danger">*</span></label>
-                            <select name="" id="" class="form-control rounded">
-                                <option value="" selected>Select Category</option>
-                                <option value="Website Development">Website Development</option>
-                                <option value="Mobile Development">Mobile Development</option>
-                                <option value="Desktop Development">Desktop Development</option>
-                                <option value="Software Development">Software Development</option>
-                                <option value="Game Development">Game Development</option>
+                            <label for="specialized_category" class="form-label fw-bold mb-2">Category<span class="text-danger">*</span></label>
+                            <select name="specialized_category" id="specialized_category" class="form-control rounded">
+                                <option value="{{ $info->category_id }}" selected>{{ $info->category->category }}</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Title<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Title" required>
+                            <label for="title" class="form-label fw-bold mb-2">Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="title" id="title" value="{{$info->title}}">
                         </div>
 
 
@@ -185,10 +187,12 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Edit Modal End-->
 
     <!-- Delete Modal Start -->
-    <div class="modal fade" id="DeletesModal" tabindex="-1" aria-labelledby="DeletesModal" aria-hidden="true">
+    @foreach ($spinfo as $info)
+    <div class="modal fade" id="DeletesModal{{$info->id}}" tabindex="-1" aria-labelledby="DeletesModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -199,7 +203,7 @@
                     Are you sure you want to delete this information?
                 </div>
                 <div class="modal-footer">
-                    <form action="" method="POST">
+                    <form action="{{ route('admin-specialized.info.delete', $info->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -209,6 +213,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Delete Modal End -->
 
     <!-- ============================================================================================================================================================ -->
@@ -244,11 +249,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-specialized.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Category<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Category" required>
+                            <label for="category" class="form-label fw-bold mb-2">Category<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="category" id="category" placeholder="Enter Category" required>
                         </div>
 
                         <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -265,7 +271,8 @@
 
 
     <!-- Edit Category Modal Start-->
-    <div class="modal fade" id="EditcModal" tabindex="-1" aria-labelledby="EditcModal" aria-hidden="true">
+    @foreach ($categories as $item)
+    <div class="modal fade" id="EditcModal{{$item->id}}" tabindex="-1" aria-labelledby="EditcModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -273,11 +280,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{{ route('admin-specialized.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
                         <div class="form-group mb-3">
-                            <label for="" class="form-label fw-bold mb-2">Category<span class="text-danger">*</span></label>
-                            <input type="text" class="form-control rounded" name="" id="" placeholder="Enter Category" required>
+                            <label for="category" class="form-label fw-bold mb-2">Category<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control rounded" name="category" id="category" value="{{ $item->category }}" required>
                         </div>
 
                         <div class="modal-footer1 d-flex align-items-center justify-end gap-3">
@@ -290,12 +299,14 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Edit Category Modal End-->
 
 
 
     <!-- Delete Modal Start -->
-    <div class="modal fade" id="DeletecModal" tabindex="-1" aria-labelledby="DeletecModal" aria-hidden="true">
+    @foreach ($categories as $item)
+    <div class="modal fade" id="DeletecModal{{$item->id}}" tabindex="-1" aria-labelledby="DeletecModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -306,7 +317,7 @@
                     Are you sure you want to delete this information?
                 </div>
                 <div class="modal-footer">
-                    <form action="" method="POST">
+                    <form action="{{ route('admin-specialized.delete', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -316,6 +327,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Delete Modal End -->
 
     <!-- ============================================================================================================================================================ -->

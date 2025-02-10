@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminMarqueeTextController;
 use App\Http\Controllers\AdminNumbersController;
 use App\Http\Controllers\AdminPartnerController;
 use App\Http\Controllers\AdminServiceController;
+use App\Http\Controllers\AdminSpecializedCategoryController;
+use App\Http\Controllers\AdminSpecializedController;
 use App\Http\Controllers\AdminVideoDescControlller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -81,7 +83,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
-    // Admin---About---Routes--->
+    // Admin---services---Routes--->
     Route::get('/admin-services', function () {
         return view('admin-services');
     })->name('admin-services');
@@ -90,12 +92,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/admin-services', [AdminServiceController::class, 'store'])->name('admin-services.store');
     Route::put('/admin-services/{id}', [AdminServiceController::class, 'update'])->name('admin-services.update');
     Route::delete('/admin-services/delete/{id}', [AdminServiceController::class, 'destroy'])->name('admin-services.delete');
-    // Admin---About---Routes--->
+    // Admin---services---Routes--->
 
 
+
+    // Admin---specialized---Routes--->
     Route::get('/admin-specialized', function () {
         return view('admin-specialized');
     })->name('admin-specialized');
+
+    Route::get('/admin-specialized', [AdminSpecializedCategoryController::class, 'index'])->name('admin-specialized');
+    Route::post('/admin-specialized', [AdminSpecializedCategoryController::class, 'store'])->name('admin-specialized.store');
+    Route::put('/admin-specialized/{id}', [AdminSpecializedCategoryController::class, 'update'])->name('admin-specialized.update');
+    Route::delete('/admin-specialized/delete/{id}', [AdminSpecializedCategoryController::class, 'destroy'])->name('admin-specialized.delete');
+
+    Route::post('/admin-specialized/info', [AdminSpecializedController::class, 'store'])->name('admin-specialized.info.store');
+    Route::put('/admin-specialized/info/{id}', [AdminSpecializedController::class, 'update'])->name('admin-specialized.info.update');
+    Route::delete('/admin-specialized/info/delete/{id}', [AdminSpecializedController::class, 'destroy'])->name('admin-specialized.info.delete');
+    // Admin---specialized---Routes--->
 
 
     Route::get('/admin-projects', function () {

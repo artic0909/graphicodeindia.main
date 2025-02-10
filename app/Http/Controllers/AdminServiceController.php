@@ -47,24 +47,24 @@ class AdminServiceController extends Controller
             'title' => 'string',
         ]);
 
-        $optionalSessionInfo = AdminServiceModel::find($id);
+        $servicesInfo = AdminServiceModel::find($id);
 
-        if ($optionalSessionInfo) {
+        if ($servicesInfo) {
             if ($request->hasFile('image')) {
                 // Delete the old image
-                if (file_exists(public_path('storage/' . $optionalSessionInfo->image))) {
-                    unlink(public_path('storage/' . $optionalSessionInfo->image));
+                if (file_exists(public_path('storage/' . $servicesInfo->image))) {
+                    unlink(public_path('storage/' . $servicesInfo->image));
                 }
 
                 // Store the new image
                 $file = $request->file('image');
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $filePath = $file->storeAs('uploads/service', $fileName, 'public');
-                $optionalSessionInfo->image = $filePath;
+                $servicesInfo->image = $filePath;
             }
 
-            $optionalSessionInfo->title = $request->input('title');
-            $optionalSessionInfo->save();
+            $servicesInfo->title = $request->input('title');
+            $servicesInfo->save();
 
             return back()->with('success', 'Information updated successfully!');
         } else {
@@ -75,16 +75,16 @@ class AdminServiceController extends Controller
 
     public function destroy($id)
     {
-        $optionalSessionInfo = AdminServiceModel::find($id);
+        $servicesInfo = AdminServiceModel::find($id);
 
-        if ($optionalSessionInfo) {
+        if ($servicesInfo) {
             // Delete the image file
-            if (file_exists(public_path('storage/' . $optionalSessionInfo->image))) {
-                unlink(public_path('storage/' . $optionalSessionInfo->image));
+            if (file_exists(public_path('storage/' . $servicesInfo->image))) {
+                unlink(public_path('storage/' . $servicesInfo->image));
             }
 
             // Delete the record
-            $optionalSessionInfo->delete();
+            $servicesInfo->delete();
 
             return back()->with('success', 'Information deleted successfully!');
         } else {
