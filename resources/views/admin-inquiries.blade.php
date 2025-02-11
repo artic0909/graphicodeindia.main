@@ -21,25 +21,25 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach($inquiries as $inquiry)
                             <tr>
-                                <td class="fw-bold">Saklin Mustak</td>
-                                <td class="text-success fw-bold">Website Development</td>
-                                <td class="fw-bold">1234567890</td>
-                                <td><a style="text-decoration: underline;" class="text-primary" href="mailto:">R5lTt@example.com</a></td>
+                                <td class="fw-bold">{{ $inquiry->name }}</td>
+                                <td class="text-success fw-bold">{{ $inquiry->service }}</td>
+                                <td class="fw-bold">{{ $inquiry->phone_number }}</td>
+                                <td><a style="text-decoration: underline;" class="text-primary" href="mailto:{{ $inquiry->email }}">{{ $inquiry->email }}</a></td>
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#descriptionViewModal{{$inquiry->id}}">
                                         <i class="fa-solid fa-message fa-2x text-success"></i>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeleteModal">
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#DeleteModal{{$inquiry->id}}">
                                         <i class="fa-solid fa-trash-can fa-2x text-danger"></i>
                                     </a>
                                 </td>
                             </tr>
-
+                            @endforeach
                     </table>
                 </div>
             </div>
@@ -48,27 +48,30 @@
 
 
     <!-- Inquiries View Modal Start -->
-    <div class="modal fade" id="descriptionViewModal" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
+     @foreach($inquiries as $inquiry)
+    <div class="modal fade" id="descriptionViewModal{{$inquiry->id}}" tabindex="-1" aria-labelledby="descriptionViewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="descriptionViewModalLabel">Saklin's Inquiry</h3>
+                    <h3 class="modal-title" id="descriptionViewModalLabel">{{ $inquiry->name }}'s Inquiry</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="fw-bold">fgdeghty</p>
+                    <p class="fw-bold">{{ $inquiry->inquiry }}</p>
                 </div>
 
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Inquiries View Modal End -->
 
 
 
 
     <!-- Delete Modal Start -->
-    <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModal" aria-hidden="true">
+     @foreach($inquiries as $inquiry)
+    <div class="modal fade" id="DeleteModal{{$inquiry->id}}" tabindex="-1" aria-labelledby="DeleteModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -79,7 +82,7 @@
                     Are you sure you want to delete this information?
                 </div>
                 <div class="modal-footer">
-                    <form action="" method="POST">
+                    <form action="{{ route('admin-inquiries.delete', $inquiry->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -89,6 +92,7 @@
             </div>
         </div>
     </div>
+    @endforeach
     <!-- Delete Modal End -->
 
 

@@ -120,109 +120,80 @@
 
 
 
-                
+
                 <!-- Service + Video start========================================================================================== -->
                 <div class="row service2-row">
-                    <!-- Services Section Start======================================================-->
+
+
+
+
+
+                    <!-- Blog Section Start======================================================-->
                     <section class="main-section col-8 mt-4">
                         <div class="shadow border p-4">
                             <div>
 
                                 <div class="blog-img-container p-3 mb-4"
                                     style="background-color: #E3E3E9; border-radius: 10px;">
-                                    <img style="border-radius: 10px;" src="./img/proj2.jpg" class="img-fluid" alt="">
+                                    <img style="border-radius: 10px;" src="{{ asset('storage/' . $blog->image) }}" class="img-fluid" alt="">
                                 </div>
 
 
                                 <!-- Title Section -->
                                 <p class="fw-bold fs-3">
                                     <span>
-                                        <span class="clr-org" style="text-transform: capitalize;">Blog Title</span>
+                                        <span class="clr-org" style="text-transform: capitalize;">{{ $blog->title }}</span>
                                     </span>
                                 </p>
 
-                                <p class="border p-2 rounded clr-bl fw-bold" style="background-color: #e3e3e96c; width: fit-content;">Date: 01-01-205 By-Graphicode India</p>
+                                <p class="border p-2 rounded clr-bl fw-bold" style="background-color: #e3e3e96c; width: fit-content;">Date: {{ $blog->date }} By-Graphicode India</p>
 
-                                <!-- Short Intro Section -->
+                                <!-- Description Section -->
                                 <p class="fs-6" style="text-align: justify; opacity: 0.75">
-                                    <strong>Graphicode India is a leading digital solutions
-                                        provider🚀,</strong>
-                                    specializing in custom Website development🖥️ & Android app
-                                    development📱 & Brands logo design & Banners & Poster design
-                                    & Brochure & Business Cards design & SEO (Search Engine
-                                    Optimization)🔍. Our team of experts is dedicated to
-                                    delivering innovative, tailored solutions that elevate
-                                    brands and drive business success.
+                                    {!! $blog->desc !!}
                                 </p>
-
-
-                                <!-- Information Section -->
-                                <div class="d-flex flex-column gap-3 mt-4">
-                                    <p style="text-align: justify; opacity: 0.75" class="fs-9 mt-4">
-                                        At Graphicode India, we take pride in being a premier
-                                        digital solutions provider,
-                                        <strong>specializing in custom website development, Android app
-                                            development, SEO and a range of creative design
-                                            services. From logos and banners to brochures and
-                                            business cards, our team delivers unique, high-quality
-                                            solutions that empower brands and drive growth.</strong>
-                                        With years of experience and a commitment to
-                                        affordability, we’ve successfully partnered with
-                                        businesses across various industries to bring their
-                                        visions to life.
-                                    </p>
-
-                                    <p style="text-align: justify; opacity: 0.75" class="fs-9 mt-4">
-                                        We believe that creativity and functionality go hand in
-                                        hand to create impactful digital experiences. Our approach
-                                        combines cutting-edge technology with imaginative design
-                                        to deliver solutions that are not only visually stunning
-                                        but also highly effective. Whether you need a fully
-                                        customized website, an engaging mobile application, or
-                                        comprehensive branding materials,
-                                        <strong>we ensure every project is tailored to meet your needs,
-                                            fit your budget, and exceed expectations. With
-                                            negotiable pricing and affordable AMC (Annual
-                                            Maintenance Contract) options,</strong>
-                                        we make innovative solutions accessible to all businesses.
-                                    </p>
-                                </div>
 
 
                                 <!-- Social Media -->
                                 <div class="social-tags d-flex gap-2 mt-4 justify-content-end">
-                                    <a href="" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
-                                        <img src="./icon/facebook.png" width="32" alt="">
+                                    <a href="https://www.facebook.com/profile.php?id=61566991357151" target="_blank" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
+                                        <img src="{{asset('./icon/facebook.png')}}" width="32" alt="">
                                     </a>
 
-                                    <a href="" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
-                                        <img src="./icon/instagram.png" width="27" alt="">
+                                    <a href="https://www.instagram.com/saklin_asiaan/" target="_blank" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
+                                        <img src="{{asset('./icon/instagram.png')}}" width="27" alt="">
                                     </a>
 
-                                    <a href="" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
-                                        <img src="./icon/whatsapp (1).png" width="30" alt="">
+                                    @foreach ($videos as $video)
+                                    <a href="https://wa.me/{{ $video->contact }}" target="_blank" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
+                                        <img src="{{asset('./icon/whatsapp (1).png')}}" width="30" alt="">
+                                    </a>
+                                    @endforeach
+
+                                    <a href="https://www.linkedin.com/company/graphicode-india-web-app/posts/?feedView=all" target="_blank" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
+                                        <img src="{{asset('./icon/linkedin.png')}}" width="25" alt="">
                                     </a>
 
-                                    <a href="" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
-                                        <img src="./icon/linkedin.png" width="25" alt="">
-                                    </a>
-
-                                    <a href="" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
-                                        <img src="./icon/share.png" width="25" alt="">
+                                    <a href="javascript:void(0);" onclick="shareBlog()" class="border rounded p-2 d-flex align-items-center social-button" target="_blank" class="me-3">
+                                        <img src="{{asset('./icon/share.png')}}" width="25" alt="">
                                     </a>
                                 </div>
 
                             </div>
                         </div>
                     </section>
-                    <!-- Services Section End======================================================-->
+                    <!-- Blog Section End======================================================-->
+
+
+
+
 
                     <!-- Fixed Section Start====================================================== -->
                     <section class="video-fixed-section col-4 mt-4">
                         <div class="shadow border p-3 video-fixed-section2 vfs-inner">
                             <div style="border-radius: 10px"
                                 class="img-container bg-white pt-2 d-flex justify-content-center align-items-center">
-                                <video src="./Video/demoo.mp4" autoplay muted loop class="border video-part img-fluid"
+                                <video src="{{ asset('./Video/demoo.mp4') }}" autoplay muted loop class="border video-part img-fluid"
                                     style="border-radius: 15px"></video>
                             </div>
 
@@ -230,28 +201,46 @@
                                 <p class="fw-bold fs-4 text-start m-0 video-title">
                                     👋Welcome To <span class="clr-bl">Graphicode</span>
                                 </p>
+                                @foreach ($videos as $video)
                                 <p class="fs-6 m-0 video-desc" style="text-align: justify">
-                                    Graphicode India, established two years ago, is a trusted
-                                    provider of innovative digital solutions. Our skilled team
-                                    specializes in delivering custom software, creative design
-                                    services, and IT support, ensuring client satisfaction and
-                                    exceptional results.
+                                    {{ $video->desc }}
                                 </p>
+                                @endforeach
                             </div>
 
                             <div class="buttons video-buttons p-3 d-flex justify-content-between">
-                                <a href="" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img
-                                        src="./icon/whatsapp.png" width="20" alt="" />
+                                @foreach($videos as $video)
+                                <a href="https://wa.me/{{ $video->contact }}" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img src="{{asset('./icon/whatsapp.png')}}" width="20"
+                                        alt="" />
                                     Whatsapp</a>
-                                <a href="" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="./icon/call.png"
-                                        width="20" alt="" /> Make a
+                                <a href="tel:{{ $video->contact }}" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="{{asset('./icon/call.png')}}" width="20"
+                                        alt="" /> Make a
                                     Call</a>
+                                @endforeach
                             </div>
                         </div>
                     </section>
                     <!-- Fixed Section End====================================================== -->
+
+
+
+
+
                 </div>
                 <!-- Service + Video End========================================================================================== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <!-- =============================Footer Section Start====================================================================== -->
                 <footer class="row mt-5 mb-2">
@@ -259,7 +248,7 @@
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <div class="footer-logo">
-                                    <img src="./img/logo.png" width="40" alt="" />
+                                    <img src="{{asset('./img/logo.png')}}" width="40" alt="" />
                                     <p class="opacity-75 footer-text">
                                         <span class="clr-bl fs-5">©</span> 2025 All rights
                                         reserved by <span class="clr-org fs-4">♥</span> Graphicode
@@ -272,21 +261,21 @@
                                 <div class="footer-links">
                                     <ul class="footer-ul d-flex justify-content-end align-items-center gap-3">
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/privacy-policy" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Privacy <span class="hidee"> & Policy</span></a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/services" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Services</a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/contact" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
@@ -300,15 +289,23 @@
                 </footer>
                 <!-- =============================Footer Section End====================================================================== -->
 
+
+
+
+
+
+
+
+
                 <!-- ====================================Fixed Shapes Start================================================================ -->
-                <img src="./icon/8967136.webp" class="fixed-robot" alt="" style="
+                <img src="{{asset('./icon/8967136.webp')}}" class="fixed-robot" alt="" style="
               position: fixed;
               top: 80px;
               width: 300px;
               left: 0;
               filter: drop-shadow(1px 1px 1px rgba(199, 201, 204, 0.747));
             " />
-                <img src="./icon/8992340.webp" class="fixed-shape" alt=""
+                <img src="{{asset('./icon/8992340.webp')}}" class="fixed-shape" alt=""
                     style="position: fixed; bottom: 80px; width: 150px; right: 0" />
                 <!-- ====================================Fixed Shapes End================================================================ -->
             </div>
@@ -318,6 +315,33 @@
 
     <!--JS -->
     <script src="{{asset('./js/loader.js')}}"></script>
+
+    <script>
+        function shareBlog() {
+            // Get the current blog URL
+            const blogUrl = window.location.href;
+
+            // Check if Web Share API is supported (Mobile Devices)
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: blogUrl
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch((err) => {
+                    console.error('Error sharing:', err);
+                });
+            } else {
+                // If Web Share API is not supported, copy to clipboard (For Desktop)
+                navigator.clipboard.writeText(blogUrl).then(() => {
+                    alert('Blog URL copied to clipboard!');
+                }).catch(err => {
+                    console.error('Error copying:', err);
+                });
+            }
+        }
+    </script>
+
 </body>
 
 </html>

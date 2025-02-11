@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAboutDescController;
 use App\Http\Controllers\AdminAboutFAQController;
 use App\Http\Controllers\AdminBlogController;
+use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\AdminMarqueeTextController;
 use App\Http\Controllers\AdminNumbersController;
 use App\Http\Controllers\AdminPartnerController;
@@ -14,7 +15,10 @@ use App\Http\Controllers\AdminVideoDescControlller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\user\UserAboutController;
 use App\Http\Controllers\user\UserBlogController;
+use App\Http\Controllers\user\UserContactController;
 use App\Http\Controllers\user\UserHomeController;
+use App\Http\Controllers\user\UserProjectController;
+use App\Http\Controllers\user\UserServiceController;
 use Illuminate\Support\Facades\Route;
 
 // Error page if any page not found
@@ -144,9 +148,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Admin---blogs---Routes--->
 
 
+    // Admin---Inquiries---Routes--->
     Route::get('/admin-inquiries', function () {
         return view('admin-inquiries');
     })->name('admin-inquiries');
+
+    Route::get('/admin-inquiries', [AdminContactController::class, 'index'])->name('admin-inquiries');
+    Route::delete('/admin-inquiries/delete/{id}', [AdminContactController::class, 'destroy'])->name('admin-inquiries.delete');
+    // Admin---Inquiries---Routes--->
 });
 
 
@@ -158,26 +167,17 @@ Route::get('/', [UserHomeController::class, 'index'])->name('user-home');
 
 Route::get('/about', [UserAboutController::class, 'index'])->name('user-about');
 
-Route::get('/services', function () {
-    return view('user-services');
-});
+Route::get('/services', [UserServiceController::class, 'index'])->name('user-services');
 
-Route::get('/projects', function () {
-    return view('user-projects');
-});
+Route::get('/projects', [UserProjectController::class, 'index'])->name('user-projects');
 
-Route::get('/blogs', function () {
-    return view('user-blogs');
-});
+Route::get('/blogs', [UserBlogController::class, 'index'])->name('user-blogs');
 
-Route::get('/blog-details/{id}', [UserBlogController::class, 'index'])->name('blog.details');
+Route::get('/blog-details/{id}', [UserBlogController::class, 'singleBlogDetails'])->name('blog.details');
 
+Route::get('/contact', [UserContactController::class, 'index'])->name('user-contact');
+Route::post('/contact', [UserContactController::class, 'store'])->name('user-contact.store');
 
 Route::get('/privacy-policy', function () {
     return view('user-privacy-policy');
-});
-
-
-Route::get('/contact', function () {
-    return view('user-contact');
 });

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AdminBlogModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class AdminBlogController extends Controller
 {
@@ -32,12 +34,16 @@ class AdminBlogController extends Controller
             $filePath = $file->storeAs('uploads/blogs', $fileName, 'public');
         }
 
+        $slug = Str::slug($request->input('title'), '-');
+
         // Create a new
         AdminBlogModel::create([
             'image' => $filePath ?? null,
             'title' => $request->input('title'),
             'date' => $request->input('date'),
             'desc' => $request->input('desc'),
+            'slug' => $slug,
+
         ]);
 
         return back()->with('success', 'Information added successfully!');
@@ -72,6 +78,7 @@ class AdminBlogController extends Controller
             $blogInfo->title = $request->input('title');
             $blogInfo->date = $request->input('date');
             $blogInfo->desc = $request->input('desc');
+            $blogInfo->slug = Str::slug($request->input('title'), '-');
             $blogInfo->save();
 
             return back()->with('success', 'Information updated successfully!');

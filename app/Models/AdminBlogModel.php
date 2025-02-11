@@ -14,5 +14,6 @@ class AdminBlogModel extends Model
         'title',
         'date',
         'desc',
+        'slug',
     ];
 }

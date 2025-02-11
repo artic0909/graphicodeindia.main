@@ -43,7 +43,7 @@
 
 
 
-            
+
                 <!-- Navbar Start===================================================-->
                 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar_container shadow border p-3">
                     <div class="container">
@@ -148,132 +148,23 @@
                                     </p>
 
                                     <div class="card-container p-3 gap-3">
+                                        @foreach ($services as $service)
                                         <!-- card 1 -->
                                         <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
                                             <div style="border-radius: 10px"
                                                 class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img src="./icon/website.png" width="86" alt="" />
+                                                <img src="{{ asset('storage/' . $service->image) }}" width="86" alt="" />
                                             </div>
 
                                             <div class="card-content mt-2">
                                                 <p class="fw-bold fs-6 text-center">
-                                                    Website Development
+                                                    {{ $service->title }}
                                                 </p>
                                             </div>
                                         </div>
+                                        @endforeach
 
-                                        <!-- card 2 -->
-                                        <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img src="./icon/appdevelopment.png" width="86" alt="" />
-                                            </div>
 
-                                            <div class="card-content mt-2">
-                                                <p class="fw-bold fs-6 text-center">
-                                                    App Development
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 3 -->
-                                        <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img src="./icon/logode.png" width="86" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-2">
-                                                <p class="fw-bold fs-6 text-center">
-                                                    Brands Logo Design
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 4 -->
-                                        <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img src="./icon/SEO.png" width="86" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-2">
-                                                <p class="fw-bold fs-6 text-center">
-                                                    Search Engine Optimization
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 4 -->
-                                        <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img src="./icon/business-card.png" width="86" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-2">
-                                                <p class="fw-bold fs-6 text-center">
-                                                    Business Card Design
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 4 -->
-                                        <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img src="./icon/video-edition.png" width="86" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-2">
-                                                <p class="fw-bold fs-6 text-center">Video Editing</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 4 -->
-                                        <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img src="./icon/social-media.png" width="86" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-2">
-                                                <p class="fw-bold fs-6 text-center">
-                                                    Content Marketing
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 4 -->
-                                        <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img src="./icon/graphic-designer.png" width="86" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-2">
-                                                <p class="fw-bold fs-6 text-center">Graphic Design</p>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 4 -->
-                                        <!-- <div
-                                        class="p-4 pb-0"
-                                        style="background: #cecdd891; border-radius: 15px"
-                                      >
-                                        <div
-                                          style="border-radius: 10px"
-                                          class="img-container bg-white p-3 d-flex justify-content-center align-items-center"
-                                        >
-                                          <img src="./icon/poster.png" width="86" alt="" />
-                                        </div>
-                    
-                                        <div class="card-content mt-2">
-                                          <p class="fw-bold fs-6 text-center">
-                                            Poster, Banner Design
-                                          </p>
-                                        </div>
-                                      </div> -->
                                     </div>
                                 </div>
 
@@ -287,110 +178,29 @@
                                         <div class="filter-buttons buttons2 mt-4">
                                             <div class="btnss-2 d-flex align-items-center flex-wrap gap-2">
                                                 <button id="all" class="btn btn-danger2 all-btn">All</button>
-                                                <button id="webdev" class="btn btn-danger hidee">
-                                                    Website Development
+                                                @foreach($categories as $category)
+                                                <button id="{{$category->category}}" class="btn btn-danger hidee">
+                                                    {{$category->category}}
                                                 </button>
-                                                <button id="appdev" class="btn btn-danger hidee">
-                                                    App Development
-                                                </button>
-                                                <button id="logod" class="btn btn-danger hidee">
-                                                    Brands Logo Design
-                                                </button>
-                                                <button id="seo" class="btn btn-danger hidee">SEO</button>
-                                                <button id="cardd" class="btn btn-danger hidee">
-                                                    Business Card Design
-                                                </button>
-                                                <button id="videoedit" class="btn btn-danger hidee">
-                                                    Video Editing
-                                                </button>
-                                                <button id="contentmark" class="btn btn-danger hidee">
-                                                    Content Marketing
-                                                </button>
-                                                <button id="graphicd" class="btn btn-danger hidee">
-                                                    Graphic Design
-                                                </button>
+                                                @endforeach
                                             </div>
                                         </div>
 
                                         <div class="filter-result-show sp-container row p-4 align-items-center gap-3 mt-2 mb-2">
                                             <!-- card 1 -->
-                                            <div class="p-2" data-category="webdev"
+                                            @foreach($spInfo as $info)
+                                            <div class="p-2" data-category="{{ is_object($info->category) ? $info->category->category : $info->category }}"
                                                 style="background: #cecdd891; border-radius: 10px">
                                                 <div style="border-radius: 5px"
                                                     class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/figma.png" width="40" alt="" />
+                                                    <img src="{{ asset('storage/' . $info->logo) }}" width="40" alt="" />
                                                 </div>
 
                                                 <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">Figma</p>
+                                                    <p class="fw-bold text-center clr-bl m-0">{{$info->title}}</p>
                                                 </div>
                                             </div>
-
-                                            <div class="p-2" data-category="webdev"
-                                                style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/laravel.png" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">
-                                                        Laravel
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" data-category="webdev"
-                                                style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/php.png" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">PHP</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" data-category="webdev"
-                                                style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/React.webp" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">
-                                                        React JS
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" data-category="webdev"
-                                                style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/nodejs.png" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">
-                                                        Node JS
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" data-category="graphicd"
-                                                style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/illustrator.png" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">AI</p>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </section>
@@ -422,22 +232,22 @@
                                 <p class="fw-bold fs-4 text-start m-0 video-title">
                                     👋Welcome To <span class="clr-bl">Graphicode</span>
                                 </p>
+                                @foreach ($videos as $video)
                                 <p class="fs-6 m-0 video-desc" style="text-align: justify">
-                                    Graphicode India, established two years ago, is a trusted
-                                    provider of innovative digital solutions. Our skilled team
-                                    specializes in delivering custom software, creative design
-                                    services, and IT support, ensuring client satisfaction and
-                                    exceptional results.
+                                    {{ $video->desc }}
                                 </p>
+                                @endforeach
                             </div>
 
                             <div class="buttons video-buttons p-3 d-flex justify-content-between">
-                                <a href="" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img
-                                        src="./icon/whatsapp.png" width="20" alt="" />
+                                @foreach($videos as $video)
+                                <a href="https://wa.me/{{ $video->contact }}" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img src="{{asset('./icon/whatsapp.png')}}" width="20"
+                                        alt="" />
                                     Whatsapp</a>
-                                <a href="" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="./icon/call.png"
-                                        width="20" alt="" /> Make a
+                                <a href="tel:{{ $video->contact }}" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="{{asset('./icon/call.png')}}" width="20"
+                                        alt="" /> Make a
                                     Call</a>
+                                @endforeach
                             </div>
                         </div>
                     </section>
@@ -454,13 +264,20 @@
                 </div>
                 <!-- Service + Video End========================================================================================== -->
 
+
+
+
+
+
+
+
                 <!-- =============================Footer Section Start====================================================================== -->
                 <footer class="row mt-5 mb-2">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <div class="footer-logo">
-                                    <img src="./img/logo.png" width="40" alt="" />
+                                    <img src="{{asset('./img/logo.png')}}" width="40" alt="" />
                                     <p class="opacity-75 footer-text">
                                         <span class="clr-bl fs-5">©</span> 2025 All rights
                                         reserved by <span class="clr-org fs-4">♥</span> Graphicode
@@ -473,21 +290,21 @@
                                 <div class="footer-links">
                                     <ul class="footer-ul d-flex justify-content-end align-items-center gap-3">
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/privacy-policy" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Privacy <span class="hidee"> & Policy</span></a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/services" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Services</a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/contact" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
@@ -501,15 +318,23 @@
                 </footer>
                 <!-- =============================Footer Section End====================================================================== -->
 
+
+
+
+
+
+
+
+
                 <!-- ====================================Fixed Shapes Start================================================================ -->
-                <img src="./icon/8967136.webp" class="fixed-robot" alt="" style="
+                <img src="{{asset('./icon/8967136.webp')}}" class="fixed-robot" alt="" style="
               position: fixed;
               top: 80px;
               width: 300px;
               left: 0;
               filter: drop-shadow(1px 1px 1px rgba(199, 201, 204, 0.747));
             " />
-                <img src="./icon/8992340.webp" class="fixed-shape" alt=""
+                <img src="{{asset('./icon/8992340.webp')}}" class="fixed-shape" alt=""
                     style="position: fixed; bottom: 80px; width: 150px; right: 0" />
                 <!-- ====================================Fixed Shapes End================================================================ -->
             </div>
@@ -522,4 +347,4 @@
     <script src="{{asset('./js/filter.js')}}"></script>
 </body>
 
-</html>
+</html> 

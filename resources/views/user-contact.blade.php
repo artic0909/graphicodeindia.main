@@ -151,45 +151,43 @@
                                                 <div class="contact-form">
 
 
-                                                    <form action="">
+                                                    <form action="{{route('user-contact.store')}}" method="post" enctype="multipart/form-data">
+                                                        @csrf
 
                                                         <div class="contact-form-inner gap-3">
                                                             <div class="form-group bg-white p-3 rounded">
                                                                 <label for="name" class="fw-bold pb-2">Name</label>
-                                                                <input type="text" class="form-control" id="name"
-                                                                    placeholder="Enter your name">
+                                                                <input type="text" class="form-control" id="name" name="name"
+                                                                    placeholder="Enter your name" required>
                                                             </div>
 
 
                                                             <div class="form-group bg-white p-3 rounded">
-                                                                <label for="name" class="fw-bold pb-2">Phone</label>
-                                                                <input type="text" class="form-control" id="name"
-                                                                    placeholder="Enter your number">
+                                                                <label for="phone_number" class="fw-bold pb-2">Phone</label>
+                                                                <input type="text" class="form-control" id="phone_number" name="phone_number"
+                                                                    placeholder="Enter your number" required>
                                                             </div>
 
                                                             <div class="form-group bg-white p-3 rounded">
-                                                                <label for="name" class="fw-bold pb-2">Email</label>
-                                                                <input type="text" class="form-control" id="name"
-                                                                    placeholder="Enter your email">
+                                                                <label for="email" class="fw-bold pb-2">Email</label>
+                                                                <input type="text" class="form-control" id="email" name="email"
+                                                                    placeholder="Enter your email" required>
                                                             </div>
 
 
                                                             <div class="form-group bg-white p-3 rounded">
-                                                                <label for="name" class="fw-bold pb-2">Select
+                                                                <label for="service" class="fw-bold pb-2">Select
                                                                     Service</label>
 
-                                                                <select name="" class="form-control dropdown-toggle"
-                                                                    id="">
-                                                                    <option value="" style="color: rgb(146, 148, 150);">
-                                                                        Select Service</option>
-                                                                    <option value="">Website Development</option>
-                                                                    <option value="">App Development</option>
-                                                                    <option value="">Brands Logo Design</option>
-                                                                    <option value="">SEO</option>
-                                                                    <option value="">Business Card Design</option>
-                                                                    <option value="">Video Editing</option>
-                                                                    <option value="">Content Marketing</option>
-                                                                    <option value="">Graphic Design</option>
+                                                                <select name="service" class="form-control dropdown-toggle"
+                                                                    id="service" required>
+                                                                    <option value="" style="color: rgb(146, 148, 150);">Select Service</option>
+
+                                                                    @foreach ($categories as $category)
+                                                                    <option value="{{ $category->category }}">{{ $category->category }}</option>
+                                                                    @endforeach
+
+                                                                    <option value="Others">Others</option>
                                                                 </select>
                                                             </div>
 
@@ -197,16 +195,16 @@
 
 
                                                         <div class="form-group bg-white p-3 rounded mt-3">
-                                                            <label for="name" class="fw-bold pb-2">Message</label>
+                                                            <label for="inquiry" class="fw-bold pb-2">Message</label>
 
-                                                            <textarea name="" class="form-control" id="" rows="7"
-                                                                placeholder="Describe your inquiry"></textarea>
+                                                            <textarea name="inquiry" class="form-control" id="inquiry" rows="7"
+                                                                placeholder="Describe your inquiry" required></textarea>
                                                         </div>
 
 
                                                         <div
                                                             class="buttonss d-flex align-items-center justify-content-center mt-3 mb-3">
-                                                            <button class="btn btn-danger w-100 p-3">
+                                                            <button type="submit" class="btn btn-danger w-100 p-3">
                                                                 Send Message
                                                             </button>
                                                         </div>
@@ -223,20 +221,22 @@
                                         <!-- contacts -->
                                         <div class="contacts-items d-flex gap-3 align-items-center justify-content-center flex-wrap">
 
-                                            <a style="text-decoration: none;" href="tel:" class="contact-item d-flex align-items-center clr-bl">
-                                                <img src="./icon/call.png" width="25" alt="">
-                                                <p class="m-0 ms-2 fw-bold fs-5">+91-123456789</p>
+                                            @foreach($videos as $video)
+                                            <a style="text-decoration: none;" href="tel:{{$video->contact}}" class="contact-item d-flex align-items-center clr-bl">
+                                                <img src="{{asset('./icon/call.png')}}" width="25" alt="">
+                                                <p class="m-0 ms-2 fw-bold fs-5">+{{$video->contact}}</p>
                                             </a>
 
 
 
-                                            <a style="text-decoration: none;" href="mailto:" class="contact-item d-flex align-items-center clr-bl">
-                                                <img src="./icon/mail.png" width="25" alt="">
-                                                <p class="m-0 ms-2 fw-bold fs-5">graphicodeindia@gmail.com</p>
+                                            <a style="text-decoration: none;" href="mailto:{{$video->email}}" class="contact-item d-flex align-items-center clr-bl">
+                                                <img src="{{asset('./icon/mail.png')}}" width="25" alt="">
+                                                <p class="m-0 ms-2 fw-bold fs-5">{{$video->email}}</p>
                                             </a>
+                                            @endforeach
 
-                                            <a style="text-decoration: none;" href="" class="contact-item d-flex align-items-center clr-bl">
-                                                <img src="./icon/location.png" width="25" alt="">
+                                            <a style="text-decoration: none;" target="_blank" href="https://maps.app.goo.gl/FMqHhdkKtaAE16JG9" class="contact-item d-flex align-items-center clr-bl">
+                                                <img src="{{asset('./icon/location.png')}}" width="25" alt="">
                                                 <p class="m-0 ms-2 fw-bold fs-5">Howrah, WB-711302</p>
                                             </a>
 
@@ -257,6 +257,71 @@
 
 
 
+
+
+
+
+
+
+
+
+
+                    <!-- Modals -->
+                    <!-- Success Modal -->
+                    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-success text-white">
+                                    <h5 class="modal-title" id="successModalLabel">Success</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Your inquiry has been sent successfully!
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Modal -->
+                    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-danger text-white">
+                                    <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Something went wrong! Please try again.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <!-- Fixed Section Start====================================================== -->
                     <section class="video-fixed-section col-4 mt-4">
                         <div class="shadow border p-3 video-fixed-section2 vfs-inner">
@@ -270,22 +335,22 @@
                                 <p class="fw-bold fs-4 text-start m-0 video-title">
                                     👋Welcome To <span class="clr-bl">Graphicode</span>
                                 </p>
+                                @foreach ($videos as $video)
                                 <p class="fs-6 m-0 video-desc" style="text-align: justify">
-                                    Graphicode India, established two years ago, is a trusted
-                                    provider of innovative digital solutions. Our skilled team
-                                    specializes in delivering custom software, creative design
-                                    services, and IT support, ensuring client satisfaction and
-                                    exceptional results.
+                                    {{ $video->desc }}
                                 </p>
+                                @endforeach
                             </div>
 
                             <div class="buttons video-buttons p-3 d-flex justify-content-between">
-                                <a href="" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img
-                                        src="./icon/whatsapp.png" width="20" alt="" />
+                                @foreach($videos as $video)
+                                <a href="https://wa.me/{{ $video->contact }}" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img src="{{asset('./icon/whatsapp.png')}}" width="20"
+                                        alt="" />
                                     Whatsapp</a>
-                                <a href="" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="./icon/call.png"
-                                        width="20" alt="" /> Make a
+                                <a href="tel:{{ $video->contact }}" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="{{asset('./icon/call.png')}}" width="20"
+                                        alt="" /> Make a
                                     Call</a>
+                                @endforeach
                             </div>
                         </div>
                     </section>
@@ -298,13 +363,19 @@
                 </div>
                 <!-- Service + Video End========================================================================================== -->
 
+
+
+
+
+
+
                 <!-- =============================Footer Section Start====================================================================== -->
                 <footer class="row mt-5 mb-2">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <div class="footer-logo">
-                                    <img src="./img/logo.png" width="40" alt="" />
+                                    <img src="{{asset('./img/logo.png')}}" width="40" alt="" />
                                     <p class="opacity-75 footer-text">
                                         <span class="clr-bl fs-5">©</span> 2025 All rights
                                         reserved by <span class="clr-org fs-4">♥</span> Graphicode
@@ -317,21 +388,21 @@
                                 <div class="footer-links">
                                     <ul class="footer-ul d-flex justify-content-end align-items-center gap-3">
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/privacy-policy" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Privacy <span class="hidee"> & Policy</span></a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/services" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Services</a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/contact" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
@@ -345,15 +416,23 @@
                 </footer>
                 <!-- =============================Footer Section End====================================================================== -->
 
+
+
+
+
+
+
+
+
                 <!-- ====================================Fixed Shapes Start================================================================ -->
-                <img src="./icon/8967136.webp" class="fixed-robot" alt="" style="
+                <img src="{{asset('./icon/8967136.webp')}}" class="fixed-robot" alt="" style="
               position: fixed;
               top: 80px;
               width: 300px;
               left: 0;
               filter: drop-shadow(1px 1px 1px rgba(199, 201, 204, 0.747));
             " />
-                <img src="./icon/8992340.webp" class="fixed-shape" alt=""
+                <img src="{{asset('./icon/8992340.webp')}}" class="fixed-shape" alt=""
                     style="position: fixed; bottom: 80px; width: 150px; right: 0" />
                 <!-- ====================================Fixed Shapes End================================================================ -->
             </div>
@@ -363,6 +442,21 @@
 
     <!--JS -->
     <script src="{{asset('./js/loader.js')}}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            @if(session('success'))
+            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+            @endif
+
+            @if(session('error'))
+            var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+            errorModal.show();
+            @endif
+        });
+    </script>
+
 </body>
 
 </html>

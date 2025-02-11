@@ -129,142 +129,62 @@
                                 <!-- Services============================ -->
                                 <div class="infoo">
                                     <div class="project-container gap-3" style="padding: 16px;">
+
                                         <!-- card 1 -->
+                                        @foreach ($projects as $project)
                                         <div class="p-4 pb-2 mb-4 project-item"
                                             style="background: #cecdd891; border-radius: 15px">
                                             <div style="border-radius: 10px"
                                                 class="img-container3 bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img class="project-img img-fluid" src="./img/proj-1.png" alt="" />
+                                                <img class="project-img img-fluid" src="{{ asset('storage/' . $project->image) }}" alt="" />
                                             </div>
 
                                             <div class="card-content mt-4">
-                                                <p class="fw-bold m-0 fs-5">Project Name</p>
+                                                <p class="fw-bold m-0 fs-5">{{ $project->title }}</p>
 
                                                 <p class="m-0 fs-6 project-category opacity-75">
-                                                    Website Development
+                                                    {{ $project->category }}
                                                 </p>
                                                 <p class="m-0 fs-6 project-category opacity-75 mt-2"
                                                     style="text-align: justify">
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Id, voluptates? Ratione corrupti rem quas
-                                                    autem, aliquam officia, commodi possimus placeat
-                                                    consequatur, magnam soluta. Eligendi quasquas, quas.
+                                                    {{ $project->desc }}
                                                 </p>
 
                                                 <div class="buttonss mt-3 mb-2">
-                                                    <button class="btn btn-danger3">
+                                                    <a href="{{ $project->link }}" target="_blank" class="btn btn-danger3">
                                                         Visit Site
                                                         <img src="{{asset('./icon/arrow-talk.png')}}" width="10" alt="" />
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
 
-                                        <!-- card 1 -->
-                                        <div class="p-4 pb-2 mb-4 project-item"
-                                            style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container3 bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img class="project-img img-fluid" src="./img/proj-1.png" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-4">
-                                                <p class="fw-bold m-0 fs-5">Project Name</p>
-
-                                                <p class="m-0 fs-6 project-category opacity-75">
-                                                    Website Development
-                                                </p>
-                                                <p class="m-0 fs-6 project-category opacity-75 mt-2"
-                                                    style="text-align: justify">
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Id, voluptates? Ratione corrupti rem quas
-                                                    autem, aliquam officia, commodi possimus placeat
-                                                    consequatur, magnam soluta. Eligendi quasquas, quas.
-                                                </p>
-
-                                                <div class="buttonss mt-3 mb-2">
-                                                    <button class="btn btn-danger3">
-                                                        Visit Site
-                                                        <img src="{{asset('./icon/arrow-talk.png')}}" width="10" alt="" />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 1 -->
-                                        <div class="p-4 pb-2 mb-4 project-item"
-                                            style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container3 bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img class="project-img img-fluid" src="./img/proj-1.png" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-4">
-                                                <p class="fw-bold m-0 fs-5">Project Name</p>
-
-                                                <p class="m-0 fs-6 project-category opacity-75">
-                                                    Website Development
-                                                </p>
-                                                <p class="m-0 fs-6 project-category opacity-75 mt-2"
-                                                    style="text-align: justify">
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Id, voluptates? Ratione corrupti rem quas
-                                                    autem, aliquam officia, commodi possimus placeat
-                                                    consequatur, magnam soluta. Eligendi quasquas, quas.
-                                                </p>
-
-                                                <div class="buttonss mt-3 mb-2">
-                                                    <button class="btn btn-danger3">
-                                                        Visit Site
-                                                        <img src="{{asset('./icon/arrow-talk.png')}}" width="10" alt="" />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- card 1 -->
-                                        <div class="p-4 pb-2 mb-4 project-item"
-                                            style="background: #cecdd891; border-radius: 15px">
-                                            <div style="border-radius: 10px"
-                                                class="img-container3 bg-white p-3 d-flex justify-content-center align-items-center">
-                                                <img class="project-img img-fluid" src="./img/proj-1.png" alt="" />
-                                            </div>
-
-                                            <div class="card-content mt-4">
-                                                <p class="fw-bold m-0 fs-5">Project Name</p>
-
-                                                <p class="m-0 fs-6 project-category opacity-75">
-                                                    Website Development
-                                                </p>
-                                                <p class="m-0 fs-6 project-category opacity-75 mt-2"
-                                                    style="text-align: justify">
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing
-                                                    elit. Id, voluptates? Ratione corrupti rem quas
-                                                    autem, aliquam officia, commodi possimus placeat
-                                                    consequatur, magnam soluta. Eligendi quasquas, quas.
-                                                </p>
-
-                                                <div class="buttonss align-items-end mt-3 mb-2">
-                                                    <button class="btn btn-danger3">
-                                                        Visit Site
-                                                        <img src="{{asset('./icon/arrow-talk.png')}}" width="10" alt="" />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- Pagination -->
                                 <div class="d-flex justify-content-center gap-2 mt-4 pagination">
-                                    <a href="#" class="btn btn-danger prev">Prev</a>
-                                    <a href="#" class="btn btn-danger active">1</a>
-                                    <a href="#" class="btn btn-danger">2</a>
-                                    <a href="#" class="btn btn-danger">3</a>
-                                    <a href="#" class="page-link rounded">...</a>
-                                    <a href="#" class="btn btn-danger">10</a>
-                                    <a href="#" class="btn btn-danger next">Next</a>
+                                    @if ($projects->onFirstPage())
+                                    <span class="btn btn-secondary disabled">Prev</span>
+                                    @else
+                                    <a href="{{ $projects->previousPageUrl() }}" class="btn btn-danger prev">Prev</a>
+                                    @endif
+
+                                    @foreach ($projects->getUrlRange(1, $projects->lastPage()) as $page => $url)
+                                    <a href="{{ $url }}" class="btn {{ $page == $projects->currentPage() ? 'btn-danger active' : 'btn-danger' }}">
+                                        {{ $page }}
+                                    </a>
+                                    @endforeach
+
+                                    @if ($projects->hasMorePages())
+                                    <a href="{{ $projects->nextPageUrl() }}" class="btn btn-danger next">Next</a>
+                                    @else
+                                    <span class="btn btn-secondary disabled">Next</span>
+                                    @endif
                                 </div>
+
+
                             </div>
                         </div>
                     </section>
@@ -285,22 +205,22 @@
                                 <p class="fw-bold fs-4 text-start m-0 video-title">
                                     👋Welcome To <span class="clr-bl">Graphicode</span>
                                 </p>
+                                @foreach ($videos as $video)
                                 <p class="fs-6 m-0 video-desc" style="text-align: justify">
-                                    Graphicode India, established two years ago, is a trusted
-                                    provider of innovative digital solutions. Our skilled team
-                                    specializes in delivering custom software, creative design
-                                    services, and IT support, ensuring client satisfaction and
-                                    exceptional results.
+                                    {{ $video->desc }}
                                 </p>
+                                @endforeach
                             </div>
 
                             <div class="buttons video-buttons p-3 d-flex justify-content-between">
-                                <a href="" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img
-                                        src="./icon/whatsapp.png" width="20" alt="" />
+                                @foreach($videos as $video)
+                                <a href="https://wa.me/{{ $video->contact }}" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img src="{{asset('./icon/whatsapp.png')}}" width="20"
+                                        alt="" />
                                     Whatsapp</a>
-                                <a href="" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="./icon/call.png"
-                                        width="20" alt="" /> Make a
+                                <a href="tel:{{ $video->contact }}" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="{{asset('./icon/call.png')}}" width="20"
+                                        alt="" /> Make a
                                     Call</a>
+                                @endforeach
                             </div>
                         </div>
                     </section>
@@ -311,13 +231,20 @@
                 </div>
                 <!-- Service + Video End========================================================================================== -->
 
+
+
+
+
+
+
+
                 <!-- =============================Footer Section Start====================================================================== -->
                 <footer class="row mt-5 mb-2">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <div class="footer-logo">
-                                    <img src="./img/logo.png" width="40" alt="" />
+                                    <img src="{{asset('./img/logo.png')}}" width="40" alt="" />
                                     <p class="opacity-75 footer-text">
                                         <span class="clr-bl fs-5">©</span> 2025 All rights
                                         reserved by <span class="clr-org fs-4">♥</span> Graphicode
@@ -330,21 +257,21 @@
                                 <div class="footer-links">
                                     <ul class="footer-ul d-flex justify-content-end align-items-center gap-3">
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/privacy-policy" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Privacy <span class="hidee"> & Policy</span></a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/services" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Services</a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/contact" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
@@ -358,15 +285,23 @@
                 </footer>
                 <!-- =============================Footer Section End====================================================================== -->
 
+
+
+
+
+
+
+
+
                 <!-- ====================================Fixed Shapes Start================================================================ -->
-                <img src="./icon/8967136.webp" class="fixed-robot" alt="" style="
+                <img src="{{asset('./icon/8967136.webp')}}" class="fixed-robot" alt="" style="
               position: fixed;
               top: 80px;
               width: 300px;
               left: 0;
               filter: drop-shadow(1px 1px 1px rgba(199, 201, 204, 0.747));
             " />
-                <img src="./icon/8992340.webp" class="fixed-shape" alt=""
+                <img src="{{asset('./icon/8992340.webp')}}" class="fixed-shape" alt=""
                     style="position: fixed; bottom: 80px; width: 150px; right: 0" />
                 <!-- ====================================Fixed Shapes End================================================================ -->
             </div>
