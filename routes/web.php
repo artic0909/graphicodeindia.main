@@ -12,6 +12,9 @@ use App\Http\Controllers\AdminSpecializedCategoryController;
 use App\Http\Controllers\AdminSpecializedController;
 use App\Http\Controllers\AdminVideoDescControlller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\user\UserAboutController;
+use App\Http\Controllers\user\UserBlogController;
+use App\Http\Controllers\user\UserHomeController;
 use Illuminate\Support\Facades\Route;
 
 // Error page if any page not found
@@ -151,13 +154,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // =======================================================================================================================
 // User Routes ===========================================================================================================
 // =======================================================================================================================
-Route::get('/', function () {
-    return view('user-home');
-});
+Route::get('/', [UserHomeController::class, 'index'])->name('user-home');
 
-Route::get('/about', function () {
-    return view('user-about');
-});
+Route::get('/about', [UserAboutController::class, 'index'])->name('user-about');
 
 Route::get('/services', function () {
     return view('user-services');
@@ -171,9 +170,8 @@ Route::get('/blogs', function () {
     return view('user-blogs');
 });
 
-Route::get('/single-blog', function () {
-    return view('user-single-blog');
-});
+Route::get('/blog-details/{id}', [UserBlogController::class, 'index'])->name('blog.details');
+
 
 Route::get('/privacy-policy', function () {
     return view('user-privacy-policy');

@@ -45,7 +45,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar_container shadow border p-3">
                     <div class="container">
                         <a class="navbar-brand d-flex align-items-center" href="/">
-                            <img src="./img/logo.png" alt="Graphicode India Logo" class="me-2 nav-logo" height="32" />
+                            <img src="{{asset('./img/logo.png')}}" alt="Graphicode India Logo" class="me-2 nav-logo" height="32" />
                             <span class="fw-bold fs-4 clr-bl">Graphicode</span>&nbsp;
                             <span class="fw-bold fs-4 clr-org"> India</span>
                         </a>
@@ -59,37 +59,37 @@
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2 align-items-center">
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center text-secondary" aria-current="page" id="active-nav"
-                                        href="/"><img class="nav-img" src="./icon/home.png" width="19" alt="" />&nbsp;<span>Home</span></a>
+                                        href="/"><img class="nav-img" src="{{asset('./icon/home.png')}}" width="19" alt="" />&nbsp;<span>Home</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page" href="/about"><img class="nav-img"
-                                            src="./icon/about.png" width="19" alt="" />&nbsp;<span>About</span></a>
+                                            src="{{asset('./icon/about.png')}}" width="19" alt="" />&nbsp;<span>About</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page" href="/services"><img class="nav-img"
-                                            src="./icon/services.png" width="22" alt="" />&nbsp;<span>Services</span></a>
+                                            src="{{asset('./icon/services.png')}}" width="22" alt="" />&nbsp;<span>Services</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page" href="/projects"><img class="nav-img"
-                                            src="./icon/projects.png" width="18" alt="" />&nbsp;<span>Projects</span></a>
+                                            src="{{asset('./icon/projects.png')}}" width="18" alt="" />&nbsp;<span>Projects</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page" href="/blogs"><img class="nav-img"
-                                            src="./icon/blogs.png" width="20" alt="" />&nbsp;<span>Blogs</span></a>
+                                            src="{{asset('./icon/blogs.png')}}" width="20" alt="" />&nbsp;<span>Blogs</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold hide inner-items-center" aria-current="page" href="/contact"><img class="nav-img"
-                                            src="./icon/contactus.png" width="23" alt="" />&nbsp;<span>Contact</span></a>
+                                            src="{{asset('./icon/contactus.png')}}" width="23" alt="" />&nbsp;<span>Contact</span></a>
                                 </li>
 
                                 <li class="nav-item btn-org">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page" href="mailto:">Let's Talk &nbsp;
-                                        <img class="nav-img hide" src="./icon/arrow-talk.png" width="15" alt="" /></a>
+                                        <img class="nav-img hide" src="{{asset('./icon/arrow-talk.png')}}" width="15" alt="" /></a>
                                 </li>
                             </ul>
                         </div>
@@ -116,116 +116,28 @@
                         <div class="shadow border p-3">
                             <div class="inner-items-center">
                                 <span class="fw-bold service-title-text fs-4 col-6">Services We Offered</span>
-                                <span class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer">
+                                <a href="/services" class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer; text-decoration: none;">
                                     All Services
-                                    <img src="./icon/arrow.png" alt="" width="20" />
-                                </span>
+                                    <img src="{{asset('./icon/arrow.png')}}" alt="" width="20" />
+                                </a>
                             </div>
 
                             <div class="card-container p-3 gap-3">
                                 <!-- card 1 -->
+                                @foreach($services as $service)
                                 <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
                                     <div style="border-radius: 10px"
                                         class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/website.png" width="86" alt="" />
+                                        <img src="{{ asset('storage/' . $service->image) }}" width="86" alt="" />
                                     </div>
 
                                     <div class="card-content mt-2">
                                         <p class="fw-bold fs-6 text-center">
-                                            Website Development
+                                            {{ $service->title }}
                                         </p>
                                     </div>
                                 </div>
-
-                                <!-- card 2 -->
-                                <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/appdevelopment.png" width="86" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold fs-6 text-center">App Development</p>
-                                    </div>
-                                </div>
-
-                                <!-- card 3 -->
-                                <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/logode.png" width="86" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold fs-6 text-center">Brands Logo Design</p>
-                                    </div>
-                                </div>
-
-                                <!-- card 4 -->
-                                <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/SEO.png" width="86" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold fs-6 text-center">
-                                            Search Engine Optimization
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- card 4 -->
-                                <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/business-card.png" width="86" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold fs-6 text-center">
-                                            Business Card Design
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- card 4 -->
-                                <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/video-edition.png" width="86" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold fs-6 text-center">Video Editing</p>
-                                    </div>
-                                </div>
-
-                                <!-- card 4 -->
-                                <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/social-media.png" width="86" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold fs-6 text-center">Content Marketing</p>
-                                    </div>
-                                </div>
-
-                                <!-- card 4 -->
-                                <div class="p-4 pb-0" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="img-container bg-white p-3 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/graphic-designer.png" width="86" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold fs-6 text-center">Graphic Design</p>
-                                    </div>
-                                </div>
-
-
+                                @endforeach
                             </div>
                         </div>
                     </section>
@@ -241,21 +153,25 @@
                             </div>
 
                             <div class="card-content mt-2" style="padding: 16px;">
+                                @foreach($videos as $video)
                                 <p class="fw-bold fs-4 text-start m-0 video-title">
                                     👋Welcome To <span class="clr-bl">Graphicode</span>
                                 </p>
                                 <p class="fs-6 m-0 video-desc" style="text-align: justify">
-                                    Graphicode India, established two years ago, is a trusted provider of innovative digital solutions. Our skilled team specializes in delivering custom software, creative design services, and IT support, ensuring client satisfaction and exceptional results.
+                                    {{ $video->desc }}
                                 </p>
+                                @endforeach
                             </div>
 
                             <div class="buttons video-buttons d-flex justify-content-between" style="padding: 16px;">
-                                <a href="" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img src="./icon/whatsapp.png" width="20"
+                                @foreach($videos as $video)
+                                <a href="https://wa.me/{{ $video->contact }}" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img src="{{asset('./icon/whatsapp.png')}}" width="20"
                                         alt="" />
                                     Whatsapp</a>
-                                <a href="" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="./icon/call.png" width="20"
+                                <a href="tel:{{ $video->contact }}" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="{{asset('./icon/call.png')}}" width="20"
                                         alt="" /> Make a
                                     Call</a>
+                                @endforeach
                             </div>
                         </div>
                     </section>
@@ -263,17 +179,32 @@
                 </div>
                 <!-- Service + Video End========================================================================================== -->
 
+
+
+
+
+
+
+
+
+
+
+
+
                 <!-- =============================MID ROW Start================================================================ -->
                 <div class="main-mid-row gap-3">
+
+
+
                     <!-- Projects start========================================================================================== -->
                     <section class="main-section mt-4">
                         <div class="shadow border p-3">
                             <div class="inner-items-center">
                                 <span class="fw-bold fs-4 service-title-text col-6">Our Projects</span>
-                                <span class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer">
+                                <a href="/projects" class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer; text-decoration: none;">
                                     See All
-                                    <img src="./icon/arrow.png" alt="" width="20" />
-                                </span>
+                                    <img src="{{asset('./icon/arrow.png')}}" alt="" width="20" />
+                                </a>
                             </div>
 
                             <div class="projects-container mt-2 mb-2">
@@ -284,24 +215,11 @@
                         display: flex;
                         animation: scroll 2s ease-in-out infinite;
                       " class="img-scroll-container bg-white">
-                                        <img src="./img/proj-1.png" style="width: 100%" alt="" />
 
-                                        <img src="./img/proj2.jpg" style="width: 100%" alt="" />
+                                        @foreach($projects as $project)
+                                        <img src="{{ asset('storage/' . $project->image) }}" style="width: 100%" alt="" />
+                                        @endforeach
 
-                                        <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                        <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                        <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                        <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                        <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                        <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                        <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                        <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                        <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                        <img src="./img/proj2.jpg" style="width: 100%" alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -309,235 +227,98 @@
                     </section>
                     <!-- Projects End========================================================================================== -->
 
+
+
+
+
                     <!-- Blogs Start======================================================================================================== -->
                     <section class="main-section mt-4">
                         <div class="shadow border p-3">
                             <div class="inner-items-center">
                                 <span class="fw-bold fs-4 service-title-text col-6">Latest Blogs</span>
-                                <span class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer">
+                                <a href="/blogs" class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer; text-decoration: none;">
                                     See All
-                                    <img src="./icon/arrow.png" alt="" width="20" />
-                                </span>
+                                    <img src="{{asset('./icon/arrow.png')}}" alt="" width="20" />
+                                </a>
                             </div>
 
                             <div class="scroll-container">
                                 <div class="scroll-lists">
                                     <!-- Repeat the .lists-item as needed -->
+                                    @foreach($blogs as $blog)
                                     <div class="lists-item d-flex align-items-center justify-content-between">
                                         <div class="container-for-blog d-flex align-items-center gap-2">
                                             <div class="img-container bg-white p-2 d-flex justify-content-center align-items-center"
                                                 style="border-radius: 5px">
-                                                <img src="./icon/website.png" width="30" alt="" />
+                                                <img src="{{ asset('storage/' . $blog->image) }}" width="30" alt="" />
                                             </div>
                                             <div class="card-content">
                                                 <p class="fw-bold fs-6 text-center m-0">
-                                                    Blog Title...
+                                                    {{ $blog->title }}
                                                 </p>
-                                                <p class="m-0 text-secondary">01/01/2025</p>
+                                                <p class="m-0 text-secondary">{{ $blog->date }}</p>
                                             </div>
                                         </div>
                                         <div class="buttons">
-                                            <a href="" class="btn btn-danger">View</a>
+                                            <a href="{{ url('/blog-details/' . $blog->title) }}" class="btn btn-danger">View</a>
                                         </div>
                                     </div>
+                                    @endforeach
 
-                                    <div class="lists-item d-flex align-items-center justify-content-between">
-                                        <div class="container-for-blog d-flex align-items-center gap-2">
-                                            <div class="img-container bg-white p-2 d-flex justify-content-center align-items-center"
-                                                style="border-radius: 5px">
-                                                <img src="./icon/website.png" width="30" alt="" />
-                                            </div>
-                                            <div class="card-content">
-                                                <p class="fw-bold fs-6 text-center m-0">
-                                                    Blog Title...
-                                                </p>
-                                                <p class="m-0 text-secondary">01/01/2025</p>
-                                            </div>
-                                        </div>
-                                        <div class="buttons">
-                                            <a href="" class="btn btn-danger">View</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="lists-item d-flex align-items-center justify-content-between">
-                                        <div class="container-for-blog d-flex align-items-center gap-2">
-                                            <div class="img-container bg-white p-2 d-flex justify-content-center align-items-center"
-                                                style="border-radius: 5px">
-                                                <img src="./icon/website.png" width="30" alt="" />
-                                            </div>
-                                            <div class="card-content">
-                                                <p class="fw-bold fs-6 text-center m-0">
-                                                    Blog Title...
-                                                </p>
-                                                <p class="m-0 text-secondary">01/01/2025</p>
-                                            </div>
-                                        </div>
-                                        <div class="buttons">
-                                            <a href="" class="btn btn-danger">View</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="lists-item d-flex align-items-center justify-content-between">
-                                        <div class="container-for-blog d-flex align-items-center gap-2">
-                                            <div class="img-container bg-white p-2 d-flex justify-content-center align-items-center"
-                                                style="border-radius: 5px">
-                                                <img src="./icon/website.png" width="30" alt="" />
-                                            </div>
-                                            <div class="card-content">
-                                                <p class="fw-bold fs-6 text-center m-0">
-                                                    Blog Title...
-                                                </p>
-                                                <p class="m-0 text-secondary">01/01/2025</p>
-                                            </div>
-                                        </div>
-                                        <div class="buttons">
-                                            <a href="" class="btn btn-danger">View</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="lists-item d-flex align-items-center justify-content-between">
-                                        <div class="container-for-blog d-flex align-items-center gap-2">
-                                            <div class="img-container bg-white p-2 d-flex justify-content-center align-items-center"
-                                                style="border-radius: 5px">
-                                                <img src="./icon/website.png" width="30" alt="" />
-                                            </div>
-                                            <div class="card-content">
-                                                <p class="fw-bold fs-6 text-center m-0">
-                                                    Blog Title...
-                                                </p>
-                                                <p class="m-0 text-secondary">01/01/2025</p>
-                                            </div>
-                                        </div>
-                                        <div class="buttons">
-                                            <a href="" class="btn btn-danger">View</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="lists-item d-flex align-items-center justify-content-between">
-                                        <div class="container-for-blog d-flex align-items-center gap-2">
-                                            <div class="img-container bg-white p-2 d-flex justify-content-center align-items-center"
-                                                style="border-radius: 5px">
-                                                <img src="./icon/website.png" width="30" alt="" />
-                                            </div>
-                                            <div class="card-content">
-                                                <p class="fw-bold fs-6 text-center m-0">
-                                                    Blog Title...
-                                                </p>
-                                                <p class="m-0 text-secondary">01/01/2025</p>
-                                            </div>
-                                        </div>
-                                        <div class="buttons">
-                                            <a href="" class="btn btn-danger">View</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="lists-item d-flex align-items-center justify-content-between">
-                                        <div class="container-for-blog d-flex align-items-center gap-2">
-                                            <div class="img-container bg-white p-2 d-flex justify-content-center align-items-center"
-                                                style="border-radius: 5px">
-                                                <img src="./icon/website.png" width="30" alt="" />
-                                            </div>
-                                            <div class="card-content">
-                                                <p class="fw-bold fs-6 text-center m-0">
-                                                    Blog Title...
-                                                </p>
-                                                <p class="m-0 text-secondary">01/01/2025</p>
-                                            </div>
-                                        </div>
-                                        <div class="buttons">
-                                            <a href="" class="btn btn-danger">View</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                     <!-- Blogs End======================================================================================================== -->
 
+
+
+
+
+
+
+
                     <!-- Specialized Fields start========================================================================================== -->
                     <section class="main-section mt-4">
                         <div class="shadow border p-3">
                             <div class="inner-items-center">
                                 <span class="fw-bold fs-4 col-6 service-title-text">Specialized</span>
-                                <span class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer">
+                                <a href="/services/#specialized" class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer">
                                     See All
-                                    <img src="./icon/arrow.png" alt="" width="20" />
-                                </span>
+                                    <img src="{{asset('./icon/arrow.png')}}" alt="" width="20" />
+                                </a>
                             </div>
 
                             <div class="specialized-container mt-2 mb-2">
                                 <!-- card 1 -->
+                                @foreach($spInfo as $info)
                                 <div class="p-2" style="background: #cecdd891; border-radius: 10px">
                                     <div style="border-radius: 5px"
                                         class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/figma.png" width="40" alt="" />
+                                        <img src="{{ asset('storage/' . $info->logo) }}" width="40" alt="" />
                                     </div>
 
                                     <div class="card-content mt-2">
-                                        <p class="fw-bold text-center clr-bl m-0">Figma</p>
+                                        <p class="fw-bold text-center clr-bl m-0">{{ $info->title }}</p>
                                     </div>
                                 </div>
-
-                                <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                    <div style="border-radius: 5px"
-                                        class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/laravel.png" width="40" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold text-center clr-bl m-0">Laravel</p>
-                                    </div>
-                                </div>
-
-                                <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                    <div style="border-radius: 5px"
-                                        class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/php.png" width="40" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold text-center clr-bl m-0">PHP</p>
-                                    </div>
-                                </div>
-
-                                <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                    <div style="border-radius: 5px"
-                                        class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/React.webp" width="40" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold text-center clr-bl m-0">React JS</p>
-                                    </div>
-                                </div>
-
-                                <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                    <div style="border-radius: 5px"
-                                        class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/nodejs.png" width="40" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold text-center clr-bl m-0">Node JS</p>
-                                    </div>
-                                </div>
-
-                                <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                    <div style="border-radius: 5px"
-                                        class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                        <img src="./icon/illustrator.png" width="40" alt="" />
-                                    </div>
-
-                                    <div class="card-content mt-2">
-                                        <p class="fw-bold text-center clr-bl m-0">AI</p>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </section>
                     <!-- Specialized Fields End========================================================================================== -->
                 </div>
                 <!-- =============================MID ROW End================================================================ -->
+
+
+
+
+
+
+
+
+
+
 
                 <!-- =============================Our Partners Start======================================================= -->
                 <div class="row">
@@ -547,61 +328,36 @@
                                 <span class="fw-bold fs-4 col-6 service-title-text">Our Partners</span>
                                 <span class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer">
                                     See All
-                                    <img src="./icon/arrow.png" alt="" width="20" />
+                                    <img src="{{asset('./icon/arrow.png')}}" alt="" width="20" />
                                 </span>
                             </div>
 
                             <div class="scr" style="overflow: hidden">
                                 <div class="partners-container mt-2 mb-2 d-flex align-items-center gap-3">
+                                    @foreach($partners as $partner)
                                     <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
+                                        <img src="{{ asset('storage/' . $partner->partner_logo) }}" alt="" width="120" style="height: auto; max-height: 80px; object-fit: contain;" />
                                     </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
-
-                                    <div class="partner-item p-2 bg-white border rounded">
-                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
                 <!-- =============================Our Partners End======================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <!-- =============================FAQ Section + Join + Recomendation Start======================================================= -->
                 <div class="faq-row gap-3">
@@ -613,35 +369,24 @@
 
                             <div class="card-container2 p-2">
                                 <!-- card 1 -->
+                                @foreach($nums as $num)
                                 <div class="p-3" style="background: #cecdd891; border-radius: 15px">
                                     <div style="border-radius: 10px"
                                         class="numbers-container bg-white p-3 d-flex flex-column align-items-center">
-                                        <span class="fs-4 fw-bold clr-bl">23+</span>
-                                        <span class="fs-6 fw-bold clr-org text-center">Happy Clients</span>
+                                        <span class="fs-4 fw-bold clr-bl">{{ $num->n_num }}+</span>
+                                        <span class="fs-6 fw-bold clr-org text-center">{{ $num->n_title }}</span>
                                     </div>
                                 </div>
+                                @endforeach
 
-                                <div class="p-3" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="numbers-container bg-white p-3 d-flex flex-column align-items-center">
-                                        <span class="fs-4 fw-bold clr-bl">23+</span>
-                                        <span class="fs-6 fw-bold clr-org text-center">Years In Service</span>
-                                    </div>
-                                </div>
 
-                                <div class="p-3" style="background: #cecdd891; border-radius: 15px">
-                                    <div style="border-radius: 10px"
-                                        class="numbers-container bg-white p-3 d-flex flex-column align-items-center">
-                                        <span class="fs-4 fw-bold clr-bl">23+</span>
-                                        <span class="fs-6 fw-bold clr-org text-center">Project Completed</span>
-                                    </div>
-                                </div>
-
-                                <a href="" class="btn btn-danger fs-5 fw-bold d-flex flex-column align-items-center gap-3"
+                                @foreach($videos as $video)
+                                <a href="mailto:{{ $video->email }}" class="btn btn-danger fs-5 fw-bold d-flex flex-column align-items-center gap-3"
                                     style="border-radius: 10px">
                                     <span class="service-title-text">Talk to Our Experts</span>
-                                    <img src="./icon/technical-support.png" width="60" alt="" />
+                                    <img src="{{asset('./icon/technical-support.png')}}" width="60" alt="" />
                                 </a>
+                                @endforeach
                             </div>
                         </div>
 
@@ -656,10 +401,11 @@
                                 <div class="p-3" style="background: #cecdd891; border-radius: 15px">
                                     <div style="border-radius: 10px"
                                         class="numbers-container bg-white p-3 d-flex flex-column align-items-center">
-                                        <marquee behavior="" direction="" class="fs-5 fw-semibold service-title-text clr-bl" style="opacity: 0.9">Join With
-                                            Graphicode India 🚀 Lorem ipsum dolor sit
-                                            amet👨‍💻. ✉️ Email- graphicodeindia@gmail.com 📞 Call- +91
-                                            6292237205</marquee>
+                                        @foreach($marquees as $marquee)
+                                        <marquee behavior="" direction="" class="fs-5 fw-semibold service-title-text clr-bl" style="opacity: 0.9">
+                                            {{$marquee->marquee_text}}
+                                        </marquee>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -676,84 +422,31 @@
                                 <div style="background: #cecdd891; border-radius: 15px; padding: 16px;">
                                     <!-- Accordions -->
                                     <div class="accordion" id="accordionExample">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingOne">
-                                                <button class="accordion-button collapsed fs-6 fw-semibold" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
-                                                    aria-controls="collapseOne">
-                                                    Why should I choose Graphicode India for my project?
-                                                </button>
-                                            </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                                                data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <strong>This is the first item's accordion body.</strong>
-                                                    It is hidden by default, until the collapse plugin
-                                                    adds the appropriate classes that we use to style
-                                                    each element. These classes control the overall
-                                                    appearance, as well as the showing and hiding via
-                                                    CSS transitions. You can modify any of this with
-                                                    custom CSS or overriding our default variables. It's
-                                                    also worth noting that just about any HTML can go
-                                                    within the <code>.accordion-body</code>, though the
-                                                    transition does limit overflow.
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingTwo">
-                                                <button class="accordion-button collapsed fs-6 fw-semibold" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                                    aria-controls="collapseTwo">
-                                                    Why should I choose Graphicode India for my project?
-                                                </button>
-                                            </h2>
-                                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                                data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <strong>This is the second item's accordion body.</strong>
-                                                    It is hidden by default, until the collapse plugin
-                                                    adds the appropriate classes that we use to style
-                                                    each element. These classes control the overall
-                                                    appearance, as well as the showing and hiding via
-                                                    CSS transitions. You can modify any of this with
-                                                    custom CSS or overriding our default variables. It's
-                                                    also worth noting that just about any HTML can go
-                                                    within the <code>.accordion-body</code>, though the
-                                                    transition does limit overflow.
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingThree">
-                                                <button class="accordion-button collapsed fs-6 fw-semibold" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                                    aria-controls="collapseThree">
-                                                    Why should I choose Graphicode India for my project?
-                                                </button>
-                                            </h2>
-                                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                                data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <strong>This is the third item's accordion body.</strong>
-                                                    It is hidden by default, until the collapse plugin
-                                                    adds the appropriate classes that we use to style
-                                                    each element. These classes control the overall
-                                                    appearance, as well as the showing and hiding via
-                                                    CSS transitions. You can modify any of this with
-                                                    custom CSS or overriding our default variables. It's
-                                                    also worth noting that just about any HTML can go
-                                                    within the <code>.accordion-body</code>, though the
-                                                    transition does limit overflow.
+                                        <div class="accordion" id="accordionExample">
+                                            @foreach($faqs as $index => $faq)
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="heading{{ $index }}">
+                                                    <button class="accordion-button collapsed fs-6 fw-semibold" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapse{{ $index }}"
+                                                        aria-expanded="false" aria-controls="collapse{{ $index }}">
+                                                        {{ $faq->question }}
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse{{ $index }}" class="accordion-collapse collapse"
+                                                    aria-labelledby="heading{{ $index }}" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <strong>{{ $faq->answer }}</strong>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            @endforeach
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </section>
                 </div>
                 <!-- =============================FAQ Section + Join + Recomendation End======================================================= -->
@@ -764,7 +457,7 @@
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <div class="footer-logo">
-                                    <img src="./img/logo.png" width="40" alt="" />
+                                    <img src="{{asset('./img/logo.png')}}" width="40" alt="" />
                                     <p class="opacity-75 footer-text">
                                         <span class="clr-bl fs-5">©</span> 2025 All rights
                                         reserved by <span class="clr-org fs-4">♥</span> Graphicode
@@ -777,21 +470,21 @@
                                 <div class="footer-links">
                                     <ul class="footer-ul d-flex justify-content-end align-items-center gap-3">
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/privacy-policy" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Privacy <span class="hidee"> & Policy</span></a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/services" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Services</a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/contact" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
@@ -806,14 +499,14 @@
                 <!-- =============================Footer Section End====================================================================== -->
 
                 <!-- ====================================Fixed Shapes Start================================================================ -->
-                <img src="./icon/8967136.webp" class="fixed-robot" alt="" style="
+                <img src="{{asset('./icon/8967136.webp')}}" class="fixed-robot" alt="" style="
               position: fixed;
               top: 80px;
               width: 300px;
               left: 0;
               filter: drop-shadow(1px 1px 1px rgba(199, 201, 204, 0.747));
             " />
-                <img src="./icon/8992340.webp" class="fixed-shape" alt=""
+                <img src="{{asset('./icon/8992340.webp')}}" class="fixed-shape" alt=""
                     style="position: fixed; bottom: 80px; width: 150px; right: 0" />
                 <!-- ====================================Fixed Shapes End================================================================ -->
             </div>

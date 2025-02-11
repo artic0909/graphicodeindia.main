@@ -45,7 +45,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar_container shadow border p-3">
                     <div class="container">
                         <a class="navbar-brand d-flex align-items-center" href="/">
-                            <img src="./img/logo.png" alt="Graphicode India Logo" class="me-2 nav-logo" height="32" />
+                            <img src="{{asset('./img/logo.png')}}" alt="Graphicode India Logo" class="me-2 nav-logo" height="32" />
                             <span class="fw-bold fs-4 clr-bl">Graphicode</span>&nbsp;
                             <span class="fw-bold fs-4 clr-org"> India</span>
                         </a>
@@ -60,45 +60,45 @@
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2 align-items-center">
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center text-secondary" aria-current="page"
-                                        href="/"><img class="nav-img" src="./icon/home.png" width="19"
+                                        href="/"><img class="nav-img" src="{{asset('./icon/home.png')}}" width="19"
                                             alt="" />&nbsp;<span>Home</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
-                                        href="/about"><img class="nav-img" src="./icon/about.png" width="19"
+                                        href="/about"><img class="nav-img" src="{{asset('./icon/about.png')}}" width="19"
                                             alt="" />&nbsp;<span>About</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
-                                        href="/services"><img class="nav-img" src="./icon/services.png" width="22"
+                                        href="/services"><img class="nav-img" src="{{asset('./icon/services.png')}}" width="22"
                                             alt="" />&nbsp;<span>Services</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
-                                        href="/projects"><img class="nav-img" src="./icon/projects.png" width="18"
+                                        href="/projects"><img class="nav-img" src="{{asset('./icon/projects.png')}}" width="18"
                                             alt="" />&nbsp;<span>Projects</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
-                                        href="/blogs"><img class="nav-img" src="./icon/blogs.png" width="20"
+                                        href="/blogs"><img class="nav-img" src="{{asset('./icon/blogs.png')}}" width="20"
                                             alt="" />&nbsp;<span>Blogs</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold hide inner-items-center" aria-current="page"
                                         id="active-nav" href="/contact"><img class="nav-img"
-                                            src="./icon/contactus.png" width="23"
+                                            src="{{asset('./icon/contactus.png')}}" width="23"
                                             alt="" />&nbsp;<span>Contact</span></a>
                                 </li>
 
                                 <li class="nav-item btn-org">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
-                                     href="mailto:">Let's Talk &nbsp;
-                                        <img class="nav-img hide" src="./icon/arrow-talk.png" width="15" alt="" /></a>
+                                        href="mailto:">Let's Talk &nbsp;
+                                        <img class="nav-img hide" src="{{asset('./icon/arrow-talk.png')}}" width="15" alt="" /></a>
                                 </li>
                             </ul>
                         </div>
@@ -221,7 +221,7 @@
 
 
                                         <!-- contacts -->
-                                         <div class="contacts-items d-flex gap-3 align-items-center justify-content-center flex-wrap">
+                                        <div class="contacts-items d-flex gap-3 align-items-center justify-content-center flex-wrap">
 
                                             <a style="text-decoration: none;" href="tel:" class="contact-item d-flex align-items-center clr-bl">
                                                 <img src="./icon/call.png" width="25" alt="">
@@ -240,7 +240,7 @@
                                                 <p class="m-0 ms-2 fw-bold fs-5">Howrah, WB-711302</p>
                                             </a>
 
-                                         </div>
+                                        </div>
 
                                     </div>
                                 </div>

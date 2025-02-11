@@ -38,11 +38,14 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+
+
+
                 <!-- Navbar Start===================================================-->
                 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar_container shadow border p-3">
                     <div class="container">
                         <a class="navbar-brand d-flex align-items-center" href="/">
-                            <img src="./img/logo.png" alt="Graphicode India Logo" class="me-2 nav-logo" height="32" />
+                            <img src="{{ asset('./img/logo.png') }}" alt="Graphicode India Logo" class="me-2 nav-logo" height="32" />
                             <span class="fw-bold fs-4 clr-bl">Graphicode</span>&nbsp;
                             <span class="fw-bold fs-4 clr-org"> India</span>
                         </a>
@@ -57,44 +60,44 @@
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2 align-items-center">
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center text-secondary" aria-current="page"
-                                        href="/"><img class="nav-img" src="./icon/home.png" width="19"
+                                        href="/"><img class="nav-img" src="{{asset('./icon/home.png')}}" width="19"
                                             alt="" />&nbsp;<span>Home</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page" id="active-nav"
-                                        href="/about"><img class="nav-img" src="./icon/about.png" width="19"
+                                        href="/about"><img class="nav-img" src="{{asset('./icon/about.png')}}" width="19"
                                             alt="" />&nbsp;<span>About</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
-                                        href="/services"><img class="nav-img" src="./icon/services.png" width="22"
+                                        href="/services"><img class="nav-img" src="{{asset('./icon/services.png')}}" width="22"
                                             alt="" />&nbsp;<span>Services</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
-                                        href="/projects"><img class="nav-img" src="./icon/projects.png" width="18"
+                                        href="/projects"><img class="nav-img" src="{{asset('./icon/projects.png')}}" width="18"
                                             alt="" />&nbsp;<span>Projects</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
-                                        href="/blogs"><img class="nav-img" src="./icon/blogs.png" width="20"
+                                        href="/blogs"><img class="nav-img" src="{{asset('./icon/blogs.png')}}" width="20"
                                             alt="" />&nbsp;<span>Blogs</span></a>
                                 </li>
 
                                 <li class="nav-item">
                                     <a class="nav-link fw-bold hide inner-items-center" aria-current="page"
-                                        href="/contact"><img class="nav-img" src="./icon/contactus.png" width="23"
+                                        href="/contact"><img class="nav-img" src="{{asset('./icon/contactus.png')}}" width="23"
                                             alt="" />&nbsp;<span>Contact</span></a>
                                 </li>
 
                                 <li class="nav-item btn-org">
                                     <a class="nav-link fw-bold inner-items-center" aria-current="page"
                                         href="mailto:">Let's Talk &nbsp;
-                                        <img class="nav-img hide" src="./icon/arrow-talk.png" width="15" alt="" /></a>
+                                        <img class="nav-img hide" src="{{asset('./icon/arrow-talk.png')}}" width="15" alt="" /></a>
                                 </li>
                             </ul>
                         </div>
@@ -102,8 +105,20 @@
                 </nav>
                 <!-- Navbar End======================================================-->
 
+
+
+
+
+
+
+
+
                 <!-- Service + Video start========================================================================================== -->
                 <div class="row service2-row">
+
+
+
+
                     <!-- Services Section Start======================================================-->
                     <section class="main-section col-8 mt-4">
                         <div class="shadow border p-4">
@@ -117,88 +132,50 @@
                                 </p>
 
                                 <!-- Short Intro Section -->
+                                @foreach ($abouts as $about)
                                 <p class="fs-6" style="text-align: justify; opacity: 0.75">
-                                    <strong>Graphicode India is a leading digital solutions
-                                        provider🚀,</strong>
-                                    specializing in custom Website development🖥️ & Android app
-                                    development📱 & Brands logo design & Banners & Poster design
-                                    & Brochure & Business Cards design & SEO (Search Engine
-                                    Optimization)🔍. Our team of experts is dedicated to
-                                    delivering innovative, tailored solutions that elevate
-                                    brands and drive business success.
+                                    {!! $about->desc_one !!}
                                 </p>
+                                @endforeach
 
                                 <!-- Numbers Section -->
-                                <div class="numbers-containerr mt-5 mb-5" style="
-                      display: flex;
-                      align-items: center;
-                      justify-content: space-between;
-                    ">
+                                <div class="numbers-containerr mt-5 mb-5" style="display: flex; align-items: center; justify-content: space-between; ">
                                     <div class="">
                                         <div class="d-flex align-items-center gap-3">
+                                            @foreach ($nums as $num)
                                             <div class="numbers-items">
-                                                <p class="m-0 fw-bold fs-1">21+</p>
+                                                <p class="m-0 fw-bold fs-1">{{ $num->n_num }}+</p>
                                                 <p class="m-0 fw-semibold opacity-75">
-                                                    happy Clients
+                                                    {{ $num->n_title }}
                                                 </p>
                                             </div>
-
-                                            <div class="numbers-items">
-                                                <p class="m-0 fw-bold fs-1">21+</p>
-                                                <p class="m-0 fw-semibold opacity-75">
-                                                    Years of Experience
-                                                </p>
-                                            </div>
-
-                                            <div class="numbers-items">
-                                                <p class="m-0 fw-bold fs-1">21+</p>
-                                                <p class="m-0 fw-semibold opacity-75">
-                                                    Project Completed
-                                                </p>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
 
                                     <div class="btn-conatiner d-flex justify-content-end align-items-center">
-                                        <a href="" class="btn btn-danger fw-semibold">
+                                        @foreach ($videos as $video)
+                                        <a href="mailto:{{$video->contact}}" class="btn btn-danger fw-semibold">
                                             <p class="m-0 av-btn">
                                                 <img src="./img/24-7.gif" width="40" alt="" class="rounded" />
                                                 <span>Available for Collaboration</span>
                                             </p>
                                         </a>
+                                        @endforeach
                                     </div>
                                 </div>
 
                                 <!-- Information Section -->
                                 <div class="d-flex flex-column gap-3 mt-4">
+                                    @foreach ($abouts as $about)
                                     <p style="text-align: justify; opacity: 0.75" class="fs-9 mt-4">
-                                        At Graphicode India, we take pride in being a premier
-                                        digital solutions provider,
-                                        <strong>specializing in custom website development, Android app
-                                            development, SEO and a range of creative design
-                                            services. From logos and banners to brochures and
-                                            business cards, our team delivers unique, high-quality
-                                            solutions that empower brands and drive growth.</strong>
-                                        With years of experience and a commitment to
-                                        affordability, we’ve successfully partnered with
-                                        businesses across various industries to bring their
-                                        visions to life.
+                                        {!! $about->desc_two !!}
                                     </p>
 
                                     <p style="text-align: justify; opacity: 0.75" class="fs-9 mt-4">
-                                        We believe that creativity and functionality go hand in
-                                        hand to create impactful digital experiences. Our approach
-                                        combines cutting-edge technology with imaginative design
-                                        to deliver solutions that are not only visually stunning
-                                        but also highly effective. Whether you need a fully
-                                        customized website, an engaging mobile application, or
-                                        comprehensive branding materials,
-                                        <strong>we ensure every project is tailored to meet your needs,
-                                            fit your budget, and exceed expectations. With
-                                            negotiable pricing and affordable AMC (Annual
-                                            Maintenance Contract) options,</strong>
-                                        we make innovative solutions accessible to all businesses.
+                                        {{!! $about->desc_three !!}}
                                     </p>
+                                    @endforeach
                                 </div>
 
                                 <!-- Partners Section -->
@@ -207,59 +184,16 @@
                                         <div class="shadow border p-3">
                                             <div class="inner-items-center">
                                                 <span class="fw-bold fs-4 col-6 service-title-text">Our Partners</span>
-                                                <span class="fw-bold fs-6 col-6 clr-bl text-end"
-                                                    style="cursor: pointer">
-                                                    See All
-                                                    <img src="./icon/arrow.png" alt="" width="20" />
-                                                </span>
+
                                             </div>
 
                                             <div class="scr" style="overflow: hidden">
-                                                <div
-                                                    class="partners-container mt-2 mb-2 d-flex align-items-center gap-3">
+                                                <div class="partners-container mt-2 mb-2 d-flex align-items-center gap-3">
+                                                    @foreach($partners as $partner)
                                                     <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
+                                                        <img src="{{ asset('storage/' . $partner->partner_logo) }}" alt="" width="120" style="height: auto; max-height: 80px; object-fit: contain;" />
                                                     </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
-
-                                                    <div class="partner-item p-2 bg-white border rounded">
-                                                        <img src="./icon/logoD.png" alt="" width="120" />
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -272,85 +206,29 @@
                                         <div class="inner-items-center">
                                             <span class="fw-bold fs-4 col-6 service-title-text">Our Specialized
                                                 Fields</span>
-                                            <span class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer">
+                                            <a href="/services/#specialized" class="fw-bold fs-6 col-6 clr-bl text-end" style="cursor: pointer; text-decoration: none">
                                                 See All
                                                 <img src="./icon/arrow.png" alt="" width="20" />
-                                            </span>
+                                            </a>
                                         </div>
 
                                         <div class="sp-container p-4 align-items-center gap-3 mt-2 mb-2">
+
                                             <!-- card 1 -->
+                                            @foreach ($spInfo as $info)
                                             <div class="p-2" style="background: #cecdd891; border-radius: 10px">
                                                 <div style="border-radius: 5px"
                                                     class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/figma.png" width="40" alt="" />
+                                                    <img src="{{ asset('storage/' . $info->logo) }}" width="40" alt="" />
                                                 </div>
 
                                                 <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">Figma</p>
+                                                    <p class="fw-bold text-center clr-bl m-0">{{ $info->title }}</p>
                                                 </div>
                                             </div>
+                                            @endforeach
 
-                                            <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/laravel.png" width="40" alt="" />
-                                                </div>
 
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">
-                                                        Laravel
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/php.png" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">PHP</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/React.webp" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">
-                                                        React JS
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/nodejs.png" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">
-                                                        Node JS
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="p-2" style="background: #cecdd891; border-radius: 10px">
-                                                <div style="border-radius: 5px"
-                                                    class="img-container bg-white p-2 d-flex justify-content-center align-items-center">
-                                                    <img src="./icon/illustrator.png" width="40" alt="" />
-                                                </div>
-
-                                                <div class="card-content mt-2">
-                                                    <p class="fw-bold text-center clr-bl m-0">AI</p>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </section>
@@ -379,24 +257,9 @@
                               display: flex;
                               animation: scroll 2s ease-in-out infinite;
                             " class="img-scroll-container bg-white">
-                                                    <img src="./img/proj-1.png" style="width: 100%" alt="" />
-
-                                                    <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                                    <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                                    <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                                    <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                                    <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                                    <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                                    <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                                    <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                                    <img src="./img/proj2.jpg" style="width: 100%" alt="" />
-
-                                                    <img src="./img/proj-1.png" style="width: 100%" alt="" />
-                                                    <img src="./img/proj2.jpg" style="width: 100%" alt="" />
+                                                    @foreach($projects as $project)
+                                                    <img src="{{ asset('storage/' . $project->image) }}" class="image-fluid" style="width: 100%" alt="" />
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -416,89 +279,27 @@
                                             <div style="background: #cecdd891; border-radius: 15px; padding: 16px;">
                                                 <!-- Accordions -->
                                                 <div class="accordion" id="accordionExample">
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingOne">
-                                                            <button class="accordion-button collapsed fs-6 fw-semibold"
-                                                                type="button" data-bs-toggle="collapse"
-                                                                data-bs-target="#collapseOne" aria-expanded="false"
-                                                                aria-controls="collapseOne">
-                                                                Why should I choose Graphicode India for my project?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseOne" class="accordion-collapse collapse"
-                                                            aria-labelledby="headingOne"
-                                                            data-bs-parent="#accordionExample">
-                                                            <div class="accordion-body">
-                                                                <strong>This is the first item's accordion
-                                                                    body.</strong>
-                                                                It is hidden by default, until the collapse plugin
-                                                                adds the appropriate classes that we use to style
-                                                                each element. These classes control the overall
-                                                                appearance, as well as the showing and hiding via
-                                                                CSS transitions. You can modify any of this with
-                                                                custom CSS or overriding our default variables. It's
-                                                                also worth noting that just about any HTML can go
-                                                                within the <code>.accordion-body</code>, though the
-                                                                transition does limit overflow.
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingTwo">
-                                                            <button class="accordion-button collapsed fs-6 fw-semibold"
-                                                                type="button" data-bs-toggle="collapse"
-                                                                data-bs-target="#collapseTwo" aria-expanded="false"
-                                                                aria-controls="collapseTwo">
-                                                                Why should I choose Graphicode India for my project?
-                                                            </button>
-                                                        </h2>
-                                                        <div id="collapseTwo" class="accordion-collapse collapse"
-                                                            aria-labelledby="headingTwo"
-                                                            data-bs-parent="#accordionExample">
-                                                            <div class="accordion-body">
-                                                                <strong>This is the second item's accordion
-                                                                    body.</strong>
-                                                                It is hidden by default, until the collapse plugin
-                                                                adds the appropriate classes that we use to style
-                                                                each element. These classes control the overall
-                                                                appearance, as well as the showing and hiding via
-                                                                CSS transitions. You can modify any of this with
-                                                                custom CSS or overriding our default variables. It's
-                                                                also worth noting that just about any HTML can go
-                                                                within the <code>.accordion-body</code>, though the
-                                                                transition does limit overflow.
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
+                                                    @foreach($faqs as $index => $faq)
                                                     <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="headingThree">
-                                                            <button class="accordion-button collapsed fs-6 fw-semibold"
-                                                                type="button" data-bs-toggle="collapse"
-                                                                data-bs-target="#collapseThree" aria-expanded="false"
-                                                                aria-controls="collapseThree">
-                                                                Why should I choose Graphicode India for my project?
+                                                        <h2 class="accordion-header" id="heading{{ $index }}">
+                                                            <button class="accordion-button collapsed fs-6 fw-semibold" type="button"
+                                                                data-bs-toggle="collapse" data-bs-target="#collapse{{ $index }}"
+                                                                aria-expanded="false" aria-controls="collapse{{ $index }}">
+                                                                {{ $faq->question }}
                                                             </button>
                                                         </h2>
-                                                        <div id="collapseThree" class="accordion-collapse collapse"
-                                                            aria-labelledby="headingThree"
-                                                            data-bs-parent="#accordionExample">
+                                                        <div id="collapse{{ $index }}" class="accordion-collapse collapse"
+                                                            aria-labelledby="heading{{ $index }}" data-bs-parent="#accordionExample">
                                                             <div class="accordion-body">
-                                                                <strong>This is the third item's accordion
-                                                                    body.</strong>
-                                                                It is hidden by default, until the collapse plugin
-                                                                adds the appropriate classes that we use to style
-                                                                each element. These classes control the overall
-                                                                appearance, as well as the showing and hiding via
-                                                                CSS transitions. You can modify any of this with
-                                                                custom CSS or overriding our default variables. It's
-                                                                also worth noting that just about any HTML can go
-                                                                within the <code>.accordion-body</code>, though the
-                                                                transition does limit overflow.
+                                                                <strong>{{ $faq->answer }}</strong>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    @endforeach
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -508,6 +309,15 @@
                         </div>
                     </section>
                     <!-- Services Section End======================================================-->
+
+
+
+
+
+
+
+
+
 
                     <!-- Fixed Section Start====================================================== -->
                     <section class="video-fixed-section col-4 mt-4">
@@ -522,22 +332,22 @@
                                 <p class="fw-bold fs-4 text-start m-0 video-title">
                                     👋Welcome To <span class="clr-bl">Graphicode</span>
                                 </p>
+                                @foreach ($videos as $video)
                                 <p class="fs-6 m-0 video-desc" style="text-align: justify">
-                                    Graphicode India, established two years ago, is a trusted
-                                    provider of innovative digital solutions. Our skilled team
-                                    specializes in delivering custom software, creative design
-                                    services, and IT support, ensuring client satisfaction and
-                                    exceptional results.
+                                    {{ $video->desc }}
                                 </p>
+                                @endforeach
                             </div>
 
                             <div class="buttons video-buttons p-3 d-flex justify-content-between">
-                                <a href="" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img
-                                        src="./icon/whatsapp.png" width="20" alt="" />
+                                @foreach($videos as $video)
+                                <a href="https://wa.me/{{ $video->contact }}" class="btn btn-danger btns-1 fw-semibold p-3 px-4"><img src="{{asset('./icon/whatsapp.png')}}" width="20"
+                                        alt="" />
                                     Whatsapp</a>
-                                <a href="" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="./icon/call.png"
-                                        width="20" alt="" /> Make a
+                                <a href="tel:{{ $video->contact }}" class="btn btn-org-01 btns-2 fw-semibold p-3 px-4"><img src="{{asset('./icon/call.png')}}" width="20"
+                                        alt="" /> Make a
                                     Call</a>
+                                @endforeach
                             </div>
                         </div>
                     </section>
@@ -545,13 +355,21 @@
                 </div>
                 <!-- Service + Video End========================================================================================== -->
 
+
+
+
+
+
+
+
+
                 <!-- =============================Footer Section Start====================================================================== -->
                 <footer class="row mt-5 mb-2">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-6">
                                 <div class="footer-logo">
-                                    <img src="./img/logo.png" width="40" alt="" />
+                                    <img src="{{asset('./img/logo.png')}}" width="40" alt="" />
                                     <p class="opacity-75 footer-text">
                                         <span class="clr-bl fs-5">©</span> 2025 All rights
                                         reserved by <span class="clr-org fs-4">♥</span> Graphicode
@@ -564,21 +382,21 @@
                                 <div class="footer-links">
                                     <ul class="footer-ul d-flex justify-content-end align-items-center gap-3">
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/privacy-policy" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Privacy <span class="hidee"> & Policy</span></a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/services" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
                           ">Services</a>
                                         </li>
                                         <li>
-                                            <a href="#" style="
+                                            <a href="/contact" style="
                             text-decoration: none;
                             color: black;
                             opacity: 0.75;
@@ -593,14 +411,14 @@
                 <!-- =============================Footer Section End====================================================================== -->
 
                 <!-- ====================================Fixed Shapes Start================================================================ -->
-                <img src="./icon/8967136.webp" class="fixed-robot" alt="" style="
+                <img src="{{asset('./icon/8967136.webp')}}" class="fixed-robot" alt="" style="
               position: fixed;
               top: 80px;
               width: 300px;
               left: 0;
               filter: drop-shadow(1px 1px 1px rgba(199, 201, 204, 0.747));
             " />
-                <img src="./icon/8992340.webp" class="fixed-shape" alt=""
+                <img src="{{asset('./icon/8992340.webp')}}" class="fixed-shape" alt=""
                     style="position: fixed; bottom: 80px; width: 150px; right: 0" />
                 <!-- ====================================Fixed Shapes End================================================================ -->
             </div>
