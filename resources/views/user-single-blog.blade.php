@@ -4,13 +4,26 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Single Blog Page</title>
+    <title>{{ $blog->title }} - Graphicode India</title>
 
     <link rel="stylesheet" href="{{asset('./css/common.css')}}" />
     <link rel="stylesheet" href="{{asset('./css/index.css')}}" />
     <link rel="stylesheet" href="{{asset('./css/fixed.css')}}" />
     <link rel="stylesheet" href="{{asset('./responsive/home-responsive.css')}}" />
     <link rel="stylesheet" href="{{asset('./responsive/about-responsive.css')}}" />
+
+
+
+    <meta name="description" content="{!! $blog->desc !!}">
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india">
+
+    <meta property="og:title" content="{{ $blog->title }}">
+    <meta property="og:description" content="{{ $blog->desc }}">
+    <meta property="og:url" content="{{ url('/blogs') }}">
+    <meta name="twitter:title" content="{{ $blog->title }}">
+    <meta name="twitter:description" content="{!! $blog->desc !!}">
+
+
 
 
     <!-- Bootstrap Links -->

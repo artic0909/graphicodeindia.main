@@ -4,11 +4,112 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>Graphicode India - web & app development</title>
 
     <link rel="stylesheet" href="{{asset('./css/common.css')}}" />
     <link rel="stylesheet" href="{{asset('./css/index.css')}}" />
     <link rel="stylesheet" href="{{asset('./responsive/home-responsive.css')}}" />
+
+
+
+    <!-- seo for services -->
+    @foreach($services as $service)
+    <meta name="description" content="{{ $service->title }}">
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net">
+
+    <meta property="og:title" content="Graphicode India- web & app development">
+    <meta property="og:description" content="{{ $service->title }}">
+    <meta property="og:url" content="{{ url('/services') }}">
+    <meta name="twitter:title" content="Graphicode India">
+    <meta name="twitter:description" content="{{ $service->title }}">
+    @endforeach
+
+
+    <!-- seo for fixed section -->
+    @foreach($videos as $video)
+    <meta name="description" content="{{ $video->desc }}">
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india">
+
+    <meta property="og:title" content="Graphicode India- web & app development">
+    <meta property="og:description" content="{{ $video->desc }}">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta name="twitter:title" content="Graphicode India">
+    <meta name="twitter:description" content="{{ $video->desc }}">
+    <meta name="twitter:email" content="{{ $video->email }}">
+    <meta name="twitter:phone" content="{{ $video->contact }}">
+    @endforeach
+
+
+    <!-- seo for projects -->
+    @foreach($projects as $project)
+    <meta name="description" content="{{ $project->desc }}">
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india">
+
+    <meta property="og:title" content="Graphicode India- web & app development">
+    <meta property="og:description" content="{{ $project->desc }}">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta name="twitter:title" content="{{ $project->title }}">
+    <meta name="twitter:description" content="{{ $project->desc }}">
+    <meta name="twitter:category" content="{{ $project->category }}">
+    <meta name="twitter:link" content="{{ $project->link }}">
+    @endforeach
+
+
+    <!-- seo for blogs-->
+    @foreach($blogs as $blog)
+    <meta name="description" content="{{ $blog->desc }}">
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india">
+
+    <meta property="og:title" content="Graphicode India- web & app development">
+    <meta property="og:description" content="{{ $blog->desc }}">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta name="twitter:title" content="{{ $blog->title }}">
+    <meta name="twitter:description" content="{{ $blog->desc }}">
+    <meta name="twitter:category" content="{{ $blog->category }}">
+    <meta name="twitter:link" content="{{ url('/blog-details/' . $blog->title) }}">
+    @endforeach
+
+
+    <!-- seo for specialization-->
+    @foreach($spInfo as $info)
+    <meta name="description" content="{{ $info->title }}">
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india">
+
+    <meta property="og:title" content="Graphicode India- web & app development">
+    <meta property="og:description" content="{{ $info->title }}">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta name="twitter:title" content="{{ $info->title }}">
+    <meta name="twitter:description" content="{{ $info->title }}">
+    @endforeach
+
+
+
+    <!-- seo for partners images-->
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india, partners, graphicode's partners, graphicode partner, graphicode partners">
+
+
+
+    <!-- seo for FAQ -->
+    @foreach($faqs as $faq)
+    <meta name="description" content="{{ $faq->question }}">
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india">
+
+    <meta property="og:title" content="Graphicode India- web & app development">
+    <meta property="og:description" content="{{ $faq->answer }}">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta name="twitter:title" content="{{ $faq->question }}">
+    <meta name="twitter:description" content="{{ $faq->answer }}">
+    @endforeach
+
+
+    <!-- seo for marquee text -->
+    @foreach($marquees as $marquee)
+    <meta name="description" content="{{$marquee->marquee_text}}">
+    <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india">
+    @endforeach
+
+
+
 
     <!-- Bootstrap Links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
