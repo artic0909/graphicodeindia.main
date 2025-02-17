@@ -94,7 +94,6 @@
     <meta name="description" content="{{ $faq->question }}">
     <meta name="keywords" content="services, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india">
 
-    <meta property="og:title" content="Graphicode India- web & app development">
     <meta property="og:description" content="{{ $faq->answer }}">
     <meta property="og:url" content="{{ url('/') }}">
     <meta name="twitter:title" content="{{ $faq->question }}">

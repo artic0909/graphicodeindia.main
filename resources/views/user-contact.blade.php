@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="{{asset('./responsive/about-responsive.css')}}" />
 
 
+    <meta name="description" content="Graphicode India is a leading digital solutions provider🚀,specializing in custom Website development🖥️ & Android app development📱 & Brands logo design & Banners & Poster design & Brochure & Business Cards design & SEO (Search Engine Optimization)🔍. Our team of experts is dedicated to delivering innovative, tailored solutions that elevate brands and drive business success. At Graphicode India, we take pride in being a premier digital solutions provider, specializing in custom website development, Android app development, SEO and a range of creative design services. From logos and banners to brochures and business cards, our team delivers unique, high-quality solutions that empower brands and drive growth. With years of experience and a commitment to affordability, we’ve successfully partnered with businesses across various industries to bring their visions to life. We believe that creativity and functionality go hand in hand to create impactful digital experiences. Our approach combines cutting-edge technology with imaginative design to deliver solutions that are not only visually stunning but also highly effective. Whether you need a fully customized website, an engaging mobile application, or comprehensive branding materials, we ensure every project is tailored to meet your needs, fit your budget, and exceed expectations. With negotiable pricing and affordable AMC (Annual Maintenance Contract) options, we make innovative solutions accessible to all businesses.">
+
+    <meta name="keywords" content="services,Get in Touch, get in touch, contact us, inquiries, send inquiries, send inquiry, graphicoe india support team, support, support team, team, 24/7 available, web development, web design, app development, app design, software company, software development, digital solutions, all kinds of services, logo design, graphic design, branding, brochure design service, business cards design, banners design compamny, Search Engine Optimization, seo optimize, seo optimize company, search engine optimize company, technical support company, tech support, tech support company, poster design company, graphicode india, mission, vision, GraphicodeIndia, Graphicode India, graphicodeindia.com, graphicodeindia.in, graphicodeindia.org, graphicodeindia.net, welcome to graphicode india, privacy-policy, privacy policy, privacy & policy">
+
+    <meta property="og:title" content="Inquiry Now- Graphicode India" />
+    <meta property="og:url" content="{{ url('/contact') }}">
+
+
     <!-- Bootstrap Links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
